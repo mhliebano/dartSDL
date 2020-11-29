@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import './lib-ffi/ffi.dart';
+import '../lib-ffi/ffi.dart';
 
 import 'typedef.dart';
 
