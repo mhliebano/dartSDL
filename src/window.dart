@@ -5,6 +5,7 @@ import 'def_window.dart';
 class Window {
   DynamicLibrary _sdllib;
   Pointer<Uint64> _window_internal = null;
+  get window => _window_internal;
 
   int SDL_WINDOW_FULLSCREEN = 0x00000001; /**< fullscreen window */
   int SDL_WINDOW_OPENGL = 0x00000002; /**< window usable with OpenGL context */
@@ -72,6 +73,7 @@ class Window {
   Window(DynamicLibrary lib) {
     _sdllib = lib;
   }
+
   SDL_CreateWindow(String title, int flags) {
     final SDL_CreateWindow =
         _sdllib.lookup<NativeFunction<sdl_createwindow_func>>('SDL_CreateWindow').asFunction<dart_SDL_CreateWindow>();
