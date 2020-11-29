@@ -158,7 +158,7 @@ Display and Window Management
 - SDL_RenderSetViewport
 - SDL_RenderTargetSupported
 - SDL_SetRenderDrawBlendMode
-- SDL_SetRenderDrawColor
++ SDL_SetRenderDrawColor
 - SDL_SetRenderTarget
 - SDL_SetTextureAlphaMod
 - SDL_SetTextureBlendMode
