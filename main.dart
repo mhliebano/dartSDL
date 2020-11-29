@@ -12,6 +12,7 @@ void main() async {
 
   await Future.delayed(const Duration(seconds: 5), () => null);
   w.SDL_SetWindowSize(800, 600);
+  w.SDL_SetWindowTitle("Mas Grande");
   await Future.delayed(const Duration(seconds: 5), () => null);
   w.SDL_DestroyWindow();
   sdl.SDL_Quit();

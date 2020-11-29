@@ -97,7 +97,7 @@ Display and Window Management
 -  SDL_SetWindowPosition
 -  SDL_SetWindowResizable
 +  SDL_SetWindowSize
--  SDL_SetWindowTitle
++  SDL_SetWindowTitle
 -  SDL_ShowMessageBox
 -  SDL_ShowSimpleMessageBox
 -  SDL_ShowWindow

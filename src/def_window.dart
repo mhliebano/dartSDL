@@ -9,7 +9,9 @@ typedef dart_SDL_CreateWindow = ffi.Pointer<ffi.Uint64> Function(
 typedef sdl_destroywindow_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window);
 typedef dart_SDL_DestroyWindow = void Function(ffi.Pointer<ffi.Uint64> window);
 typedef sdl_setwindow_size_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window, ffi.Int32 w, ffi.Int32 h);
-typedef dart_SDL_SetWindowSize = void Function(ffi.Pointer<ffi.Uint64>, int w, int h);
+typedef dart_SDL_SetWindowSize = void Function(ffi.Pointer<ffi.Uint64> window, int w, int h);
+typedef sdl_setwindowtitle_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window, ffi.Pointer<Utf8> title);
+typedef dart_SDL_SetWindowTitle = void Function(ffi.Pointer<ffi.Uint64> window, ffi.Pointer<Utf8> title);
 
 //TODO DISPLAY AND WINDOW MANAGENT
 // SDL_CreateWindowAndRenderer
@@ -87,7 +89,6 @@ typedef dart_SDL_SetWindowSize = void Function(ffi.Pointer<ffi.Uint64>, int w, i
 // SDL_SetWindowOpacity
 // SDL_SetWindowPosition
 // SDL_SetWindowResizable
-// SDL_SetWindowTitle
 // SDL_ShowMessageBox
 // SDL_ShowSimpleMessageBox
 // SDL_ShowWindow

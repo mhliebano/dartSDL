@@ -94,4 +94,11 @@ class Window {
         .asFunction<dart_SDL_SetWindowSize>();
     SDL_SetWindowSize(_window_internal, width, heigth);
   }
+
+  void SDL_SetWindowTitle(String title) {
+    final SDL_SetWindowTitle = _sdllib
+        .lookup<NativeFunction<sdl_setwindowtitle_func>>('SDL_SetWindowTitle')
+        .asFunction<dart_SDL_SetWindowTitle>();
+    SDL_SetWindowTitle(_window_internal, Utf8.toUtf8(title));
+  }
 }
