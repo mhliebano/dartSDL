@@ -1,20 +1,6 @@
 import 'dart:ffi' as ffi;
 import '../lib-ffi/ffi.dart';
 
-//SDL INITIALIZATION
-typedef sdl_init_func = ffi.Int32 Function(ffi.Int32 a);
-typedef dart_SDL_Init = int Function(int a);
-typedef sdl_quit_func = ffi.Void Function();
-typedef dart_SDL_Quit = void Function();
-//TODO SDL INITIALIZATION
-//
-// SDL_InitSubSystem
-// SDL_QuitSubSystem
-// SDL_SetMainReady
-// SDL_WasInit
-// SDL_WinRTRunApp
-//
-
 //Def Windows
 typedef sdl_createwindow_func = ffi.Pointer<ffi.Uint64> Function(
     ffi.Pointer<Utf8> title, ffi.Int32 x, ffi.Int32 y, ffi.Int32 w, ffi.Int32 h, ffi.Uint32 flags);

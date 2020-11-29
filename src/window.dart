@@ -1,7 +1,6 @@
 import 'dart:ffi';
 import '../lib-ffi/ffi.dart';
-
-import 'typedef.dart';
+import 'def_window.dart';
 
 class Window {
   DynamicLibrary _sdllib;
