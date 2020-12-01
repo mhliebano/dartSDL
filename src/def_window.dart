@@ -1,17 +1,41 @@
-import 'dart:ffi' as ffi;
+import 'dart:ffi';
 import '../lib-ffi/ffi.dart';
 
 //Def Windows
-typedef sdl_createwindow_func = ffi.Pointer<ffi.Uint64> Function(
-    ffi.Pointer<Utf8> title, ffi.Int32 x, ffi.Int32 y, ffi.Int32 w, ffi.Int32 h, ffi.Uint32 flags);
-typedef dart_SDL_CreateWindow = ffi.Pointer<ffi.Uint64> Function(
-    ffi.Pointer<Utf8> title, int x, int y, int w, int h, int flags);
-typedef sdl_destroywindow_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window);
-typedef dart_SDL_DestroyWindow = void Function(ffi.Pointer<ffi.Uint64> window);
-typedef sdl_setwindow_size_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window, ffi.Int32 w, ffi.Int32 h);
-typedef dart_SDL_SetWindowSize = void Function(ffi.Pointer<ffi.Uint64> window, int w, int h);
-typedef sdl_setwindowtitle_func = ffi.Void Function(ffi.Pointer<ffi.Uint64> window, ffi.Pointer<Utf8> title);
-typedef dart_SDL_SetWindowTitle = void Function(ffi.Pointer<ffi.Uint64> window, ffi.Pointer<Utf8> title);
+typedef sdl_createwindow_func = Pointer<Uint64> Function(
+    Pointer<Utf8> title, Int32 x, Int32 y, Int32 w, Int32 h, Uint32 flags);
+typedef dart_SDL_CreateWindow = Pointer<Uint64> Function(Pointer<Utf8> title, int x, int y, int w, int h, int flags);
+typedef sdl_destroywindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_DestroyWindow = void Function(Pointer<Uint64> window);
+typedef sdl_setwindow_size_func = Void Function(Pointer<Uint64> window, Int32 w, Int32 h);
+typedef dart_SDL_SetWindowSize = void Function(Pointer<Uint64> window, int w, int h);
+typedef sdl_setwindowtitle_func = Void Function(Pointer<Uint64> window, Pointer<Utf8> title);
+typedef dart_SDL_SetWindowTitle = void Function(Pointer<Uint64> window, Pointer<Utf8> title);
+
+class DisplayModeStruct extends Struct {
+  @Uint32()
+  int format;
+
+  @Int32()
+  int w;
+
+  @Int32()
+  int h;
+
+  @Int32()
+  int refresh_rate;
+
+  Pointer<Void> driverdata;
+
+  factory DisplayModeStruct.allocate(int format, int w, int h, int refresh_rate, Pointer<void> driverdata) {
+    return allocate<DisplayModeStruct>().ref
+      ..format = format
+      ..w = w
+      ..h = h
+      ..refresh_rate = refresh_rate
+      ..driverdata = driverdata;
+  }
+}
 
 //TODO DISPLAY AND WINDOW MANAGENT
 // SDL_CreateWindowAndRenderer
