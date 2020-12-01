@@ -38,6 +38,6 @@ class Renderer {
     final SDL_SetRenderDrawColor = _sdllib
         .lookup<NativeFunction<sdl_setrenderdrawcolor_func>>('SDL_SetRenderDrawColor')
         .asFunction<dart_SDL_SetRenderDrawColor>();
-    SDL_SetRenderDrawColor(_render_internal, r, g, b, a);
+    return SDL_SetRenderDrawColor(_render_internal, r, g, b, a);
   }
 }
