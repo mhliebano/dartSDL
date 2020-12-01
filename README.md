@@ -167,3 +167,41 @@ Display and Window Management
 - SDL_UpdateTexture
 - SDL_UpdateYUVTexture
 ```
+
+Surface Creation and Simple Drawing
+
+```diff
+- SDL_BlitScaled
+- SDL_BlitSurface
+- SDL_ConvertPixels
+- SDL_ConvertSurface
+- SDL_ConvertSurfaceFormat
++ SDL_CreateRGBSurface
+- SDL_CreateRGBSurfaceFrom
+- SDL_CreateRGBSurfaceWithFormat
+- SDL_CreateRGBSurfaceWithFormatFrom
+- SDL_FillRect
+- SDL_FillRects
+- SDL_FreeSurface
+- SDL_GetClipRect
+- SDL_GetColorKey
+- SDL_GetSurfaceAlphaMod
+- SDL_GetSurfaceBlendMode
+- SDL_GetSurfaceColorMod
+- SDL_LoadBMP
+- SDL_LoadBMP_RW
+- SDL_LockSurface
+- SDL_LowerBlit
+- SDL_LowerBlitScaled
+- SDL_MUSTLOCK
+- SDL_SaveBMP
+- SDL_SaveBMP_RW
+- SDL_SetClipRect
+- SDL_SetColorKey
+- SDL_SetSurfaceAlphaMod
+- SDL_SetSurfaceBlendMode
+- SDL_SetSurfaceColorMod
+- SDL_SetSurfacePalette
+- SDL_SetSurfaceRLE
+- SDL_UnlockSurface
+```
