@@ -1,6 +1,8 @@
 import 'dart:ffi';
 import '../lib-ffi/ffi.dart';
-import 'def_window.dart';
+import 'class_struct/surface_struct.dart';
+import 'dartSDL.dart';
+import 'defs/def_window.dart';
 
 class Window {
   DynamicLibrary _sdllib;
@@ -102,5 +104,13 @@ class Window {
         .lookup<NativeFunction<sdl_setwindowtitle_func>>('SDL_SetWindowTitle')
         .asFunction<dart_SDL_SetWindowTitle>();
     SDL_SetWindowTitle(_window_internal, Utf8.toUtf8(title));
+  }
+
+  Surface SDL_GetWindowSurface() {
+    final SDL_GetWindowSurface = _sdllib
+        .lookup<NativeFunction<sld_getwindowsurface_func>>('SDL_GetWindowSurface')
+        .asFunction<dart_SDL_GetWindowSurface>();
+    Pointer<SurfaceStruct> t = SDL_GetWindowSurface(_window_internal);
+    return Surface.SDL_CreateRGBSurfaceFrom(t, _sdllib);
   }
 }

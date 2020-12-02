@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'def_render.dart';
+import 'defs/def_render.dart';
 
 class Renderer {
   DynamicLibrary _sdllib;
