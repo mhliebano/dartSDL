@@ -1,4 +1,5 @@
 import 'src/dartSDL.dart';
+import 'src/display.dart';
 
 void main() async {
   DartSDL sdl = DartSDL();
@@ -7,12 +8,15 @@ void main() async {
   w.setWindowFlag = w.SDL_WINDOW_FLAG;
   w.setDimension(400, 300);
   Renderer r = Renderer(sdl.sdllib);
+  Display ds = Display(sdl.sdllib);
 
   Surface s = Surface.SDL_CreateRGBSurface(400, 300, 0, 0, 0, 0, sdl.sdllib);
   print(s.refcount);
   //s.SDL_CreateRGBSurface(0, 400, 300, 0, 0, 0, 255);
 
   sdl.SDL_Init();
+  print(sdl.SDL_GetNumVideoDisplays());
+  print(sdl.SDL_GetNumDisplayModes(1));
   w.SDL_CreateWindow("Mi Window", 0);
   r.SDL_CreateRenderer(w.window);
 
