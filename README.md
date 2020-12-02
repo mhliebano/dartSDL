@@ -51,8 +51,8 @@ Display and Window Management
 -  SDL_GetDisplayName
 -  SDL_GetDisplayUsableBounds
 -  SDL_GetGrabbedWindow
--  SDL_GetNumDisplayModes
--  SDL_GetNumVideoDisplays
++  SDL_GetNumDisplayModes
++  SDL_GetNumVideoDisplays
 -  SDL_GetNumVideoDrivers
 -  SDL_GetVideoDriver
 -  SDL_GetWindowBordersSize
