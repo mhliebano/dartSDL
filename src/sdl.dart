@@ -35,4 +35,18 @@ class DartSDL {
     final SDL_Quit = _sdllib.lookup<NativeFunction<sdl_quit_func>>('SDL_Quit').asFunction<dart_SDL_Quit>();
     SDL_Quit();
   }
+
+  int SDL_GetNumDisplayModes(int index) {
+    final SDL_GetNumDisplaysModes = _sdllib
+        .lookup<NativeFunction<sdl_getnumdisplaymodes_func>>('SDL_GetNumDisplayModes')
+        .asFunction<dart_SDL_GetNumDisplayModes>();
+    return SDL_GetNumDisplaysModes(index);
+  }
+
+  int SDL_GetNumVideoDisplays() {
+    final SDL_GetNumVideoDisplays = _sdllib
+        .lookup<NativeFunction<sdl_getnumvideodisplays_func>>('SDL_GetNumVideoDisplays')
+        .asFunction<dart_SDL_GetNumVideoDisplays>();
+    return SDL_GetNumVideoDisplays();
+  }
 }
