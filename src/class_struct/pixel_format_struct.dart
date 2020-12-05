@@ -1,5 +1,5 @@
-//TODO implemnetar el factory
 import 'dart:ffi';
+import '../../lib-ffi/ffi.dart';
 import 'palette_struct.dart';
 
 class PixelFormatStruct extends Struct {
@@ -25,4 +25,17 @@ class PixelFormatStruct extends Struct {
 
   @Uint32()
   int amask;
+
+  factory PixelFormatStruct.allocate(int format, Pointer<PaletteStruct> palette, int bitsPerPixel, int bytesPerPixel,
+      int rmask, int gmask, int bmask, int amask) {
+    return allocate<PixelFormatStruct>().ref
+      ..format
+      ..palette
+      ..bitsPerPixel
+      ..bytesPerPixel
+      ..rmask
+      ..gmask
+      ..bmask
+      ..amask;
+  }
 }

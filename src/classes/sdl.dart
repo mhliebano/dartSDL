@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import 'defs/def_sdl.dart';
+import '../defs/def_sdl.dart';
 
 class DartSDL {
   static const SDL_INIT_VIDEO = 0x00000020;

@@ -1,8 +1,8 @@
 import 'dart:ffi';
-import '../lib-ffi/ffi.dart';
-import 'class_struct/surface_struct.dart';
-import 'dartSDL.dart';
-import 'defs/def_window.dart';
+import '../../lib-ffi/ffi.dart';
+import '../class_struct/surface_struct.dart';
+import '../dartSDL.dart';
+import '../defs/def_window.dart';
 
 class Window {
   DynamicLibrary _sdllib;

@@ -1,27 +1,42 @@
 import 'dart:ffi';
-import 'class_struct/pixel_format_struct.dart';
-import 'class_struct/rect_struct.dart';
-import 'class_struct/surface_struct.dart';
-import 'defs/def_surface.dart';
+import '../class_struct/surface_struct.dart';
+import '../defs/def_surface.dart';
+import 'pixel_format.dart';
+import 'rect.dart';
 
 class Surface {
   //TODO implementar resto de las propiedades
+  //void* pixels (r/w)
+  //void* userdata (r/w)
 
-  get heigth => _s.ref.h;
-  get width => _s.ref.w;
+  //Read Only
+  int _h;
+  get heigth => _h;
+  //Read Only
+  int _w;
+  get width => _w;
+  //Read Only
+  int _pitch;
+  get pitch => _pitch;
 
   get refcount => _s.ref.refcount;
   set refcount(int r) {
     _s.ref.refcount = r;
   }
 
-  //Rect _r;
-  Pointer<RectStruct> get rect => _s.ref.SDL_Rect;
-  Pointer<PixelFormatStruct> get pixelFormat => _s.ref.SDL_PixelFormat;
+  //Read Only
+  Rect get rect => Rect.fromStruct(_s.ref.SDL_Rect);
 
+  //Read Only
+  PixelFormat get pixelFormat => PixelFormat.fromStruct(_s.ref.SDL_PixelFormat);
+
+  //Constructor interno
   Pointer<SurfaceStruct> _s;
   Surface._default(Pointer<SurfaceStruct> s) {
     _s = s;
+    _h = s.ref.h;
+    _w = s.ref.w;
+    _pitch = s.ref.pitch;
   }
 
   factory Surface.SDL_CreateRGBSurface(int width, int height, int r, int g, int b, int a, DynamicLibrary sdllib) {

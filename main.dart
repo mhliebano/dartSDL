@@ -4,15 +4,16 @@ void main() async {
   DartSDL sdl = DartSDL();
   bool run = true;
   Window w = Window(sdl.sdllib);
-  w.setWindowFlag = w.SDL_WINDOW_FLAG;
+  w.setWindowFlag = w.SDL_WINDOW_OPENGL;
   w.setDimension(400, 300);
   w.setPosition(50, 50);
 
   Renderer r = Renderer(sdl.sdllib);
 
   Surface s = Surface.SDL_CreateRGBSurface(200, 150, 0, 0, 0, 0, sdl.sdllib);
-  print("${s.width},${s.pixelFormat}");
-
+  print("${s.width},${s.pixelFormat.rmask}");
+  s.pixelFormat.rmask = 125;
+  print("${s.width},${s.pixelFormat.rmask}");
   sdl.SDL_Init();
   print(sdl.SDL_GetNumVideoDisplays());
   print(sdl.SDL_GetNumDisplayModes(1));
