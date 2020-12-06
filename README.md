@@ -4,26 +4,63 @@ binding a SDL libray using dart
 ## SDL APi by Category
 http://wiki.libsdl.org/APIByCategory
 
-### Functions Implements
-Initialization and Shutdown
+### Category Implements
 
+#### Initialization and Shutdown
+
+Functions
 ```diff
-+ SDL_Init
++ SDL_Init                       class DartSDL.Init 
 - SDL_InitSubSystem
-+ SDL_Quit
++ SDL_Quit                       class DartSDL.Quit
 - SDL_QuitSubSystem
 - SDL_SetMainReady
 - SDL_WasInit
 - SDL_WinRTRunApp
 ```
-Display and Window Management
 
+#### Error Handling
+
+Functions
 ```diff
-+  SDL_CreateWindow
+- SDL_ClearError   
++ SDL_GetError                   class DartSDL.GetError
+- SDL_SetError
+```
+
+
+#### Display and Window Management
+
+Enumerations
+```diff
+-SDL_BlendMode
+-SDL_GLattr
+-SDL_GLcontextFlag
+-SDL_GLprofile
+-SDL_HitTestResult
+-SDL_MessageBoxButtonFlags
+-SDL_MessageBoxColorType
+-SDL_MessageBoxFlags
+-SDL_WindowEventID
++SDL_WindowFlags              class Window.[ENUM]
+```
+Structures
+```diff
++SDL_DisplayMode              class DisplayMode
+-SDL_MessageBoxButtonData
+-SDL_MessageBoxColor
+-SDL_MessageBoxColorScheme
+-SDL_MessageBoxData
+-SDL_WindowEvent
+```
+
+Functions
+```diff
++  SDL_CreateWindow              class Window.CreateWindow
 -  SDL_CreateWindowAndRenderer
 -  SDL_CreateWindowFrom
-+  SDL_DestroyWindow
--  SDL_DisableScreenSaver
++  SDL_DestroyWindow             class Window.DestroyWindow
++  SDL_DisableScreenSaver        class DartSDL.DisableScreenSaver
 -  SDL_EnableScreenSaver
 -  SDL_GL_CreateContext
 -  SDL_GL_DeleteContext
@@ -44,15 +81,15 @@ Display and Window Management
 -  SDL_GetClosestDisplayMode
 -  SDL_GetCurrentDisplayMode
 -  SDL_GetCurrentVideoDriver
--  SDL_GetDesktopDisplayMode
++  SDL_GetDesktopDisplayMode     class DartSDL.GetDestktopDisplayMode
 -  SDL_GetDisplayBounds
 -  SDL_GetDisplayDPI
 -  SDL_GetDisplayMode
 -  SDL_GetDisplayName
 -  SDL_GetDisplayUsableBounds
 -  SDL_GetGrabbedWindow
-+  SDL_GetNumDisplayModes
-+  SDL_GetNumVideoDisplays
++  SDL_GetNumDisplayModes        class DartSDL.GetNumDisplayModes
++  SDL_GetNumVideoDisplays       class DartSDL.getNumVideoDisplays
 -  SDL_GetNumVideoDrivers
 -  SDL_GetVideoDriver
 -  SDL_GetWindowBordersSize
@@ -96,8 +133,8 @@ Display and Window Management
 -  SDL_SetWindowOpacity
 -  SDL_SetWindowPosition
 -  SDL_SetWindowResizable
-+  SDL_SetWindowSize
-+  SDL_SetWindowTitle
++  SDL_SetWindowSize             class Window.SetWindowSize
++  SDL_SetWindowTitle            class Window.SetWindowTitle
 -  SDL_ShowMessageBox
 -  SDL_ShowSimpleMessageBox
 -  SDL_ShowWindow
@@ -106,102 +143,5 @@ Display and Window Management
 -  SDL_VideoInit
 -  SDL_VideoQuit
 ```
-2D Accelerated Rendering
 
-```diff
-- SDL_ComposeCustomBlendMode
-+ SDL_CreateRenderer
-- SDL_CreateSoftwareRenderer
-- SDL_CreateTexture
-- SDL_CreateTextureFromSurface
-- SDL_CreateWindowAndRenderer
-+ SDL_DestroyRenderer
-- SDL_DestroyTexture
-- SDL_GL_BindTexture
-- SDL_GL_UnbindTexture
-- SDL_GetNumRenderDrivers
-- SDL_GetRenderDrawBlendMode
-- SDL_GetRenderDrawColor
-- SDL_GetRenderDriverInfo
-- SDL_GetRenderTarget
-- SDL_GetRenderer
-- SDL_GetRendererInfo
-- SDL_GetRendererOutputSize
-- SDL_GetTextureAlphaMod
-- SDL_GetTextureBlendMode
-- SDL_GetTextureColorMod
-- SDL_LockTexture
-- SDL_QueryTexture
-- SDL_RenderClear
-- SDL_RenderCopy
-- SDL_RenderCopyEx
-- SDL_RenderDrawLine
-- SDL_RenderDrawLines
-- SDL_RenderDrawPoint
-- SDL_RenderDrawPoints
-- SDL_RenderDrawRect
-- SDL_RenderDrawRects
-- SDL_RenderFillRect
-- SDL_RenderFillRects
-- SDL_RenderGetClipRect
-- SDL_RenderGetIntegerScale
-- SDL_RenderGetLogicalSize
-- SDL_RenderGetScale
-- SDL_RenderGetViewport
-- SDL_RenderIsClipEnabled
-- SDL_RenderPresent
-- SDL_RenderReadPixels
-- SDL_RenderSetClipRect
-- SDL_RenderSetIntegerScale
-- SDL_RenderSetLogicalSize
-- SDL_RenderSetScale
-- SDL_RenderSetViewport
-- SDL_RenderTargetSupported
-- SDL_SetRenderDrawBlendMode
-+ SDL_SetRenderDrawColor
-- SDL_SetRenderTarget
-- SDL_SetTextureAlphaMod
-- SDL_SetTextureBlendMode
-- SDL_SetTextureColorMod
-- SDL_UnlockTexture
-- SDL_UpdateTexture
-- SDL_UpdateYUVTexture
-```
 
-Surface Creation and Simple Drawing
-
-```diff
-- SDL_BlitScaled
-- SDL_BlitSurface
-- SDL_ConvertPixels
-- SDL_ConvertSurface
-- SDL_ConvertSurfaceFormat
-+ SDL_CreateRGBSurface
-- SDL_CreateRGBSurfaceFrom
-- SDL_CreateRGBSurfaceWithFormat
-- SDL_CreateRGBSurfaceWithFormatFrom
-- SDL_FillRect
-- SDL_FillRects
-- SDL_FreeSurface
-- SDL_GetClipRect
-- SDL_GetColorKey
-- SDL_GetSurfaceAlphaMod
-- SDL_GetSurfaceBlendMode
-- SDL_GetSurfaceColorMod
-- SDL_LoadBMP
-- SDL_LoadBMP_RW
-- SDL_LockSurface
-- SDL_LowerBlit
-- SDL_LowerBlitScaled
-- SDL_MUSTLOCK
-- SDL_SaveBMP
-- SDL_SaveBMP_RW
-- SDL_SetClipRect
-- SDL_SetColorKey
-- SDL_SetSurfaceAlphaMod
-- SDL_SetSurfaceBlendMode
-- SDL_SetSurfaceColorMod
-- SDL_SetSurfacePalette
-- SDL_SetSurfaceRLE
-- SDL_UnlockSurface
-```

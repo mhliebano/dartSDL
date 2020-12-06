@@ -72,11 +72,14 @@ class Window {
     _h = heigth;
   }
 
-  Window(DynamicLibrary lib) {
-    _sdllib = lib;
+  Window() {
+    _sdllib = dartSDL.sdllib;
   }
 
-  SDL_CreateWindow(String title, int flags) {
+  SDL_CreateWindow(String title) {
+    if (!dartSDL.isInit()) {
+      throw ("Debe inicializar el SDL, primero");
+    }
     final SDL_CreateWindow =
         _sdllib.lookup<NativeFunction<sdl_createwindow_func>>('SDL_CreateWindow').asFunction<dart_SDL_CreateWindow>();
     _window_internal = SDL_CreateWindow(Utf8.toUtf8(title), _x, _y, _w, _h, _sdl_window_flag);

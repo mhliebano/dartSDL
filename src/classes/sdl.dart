@@ -1,4 +1,8 @@
 import 'dart:ffi';
+import '../../lib-ffi/ffi.dart';
+import '../class_struct/displaysmode_struct.dart';
+import '../dartSDL.dart';
+import '../defs/def_display.dart';
 import '../defs/def_sdl.dart';
 
 class DartSDL {
@@ -15,11 +19,11 @@ class DartSDL {
   DynamicLibrary _sdllib;
   get sdllib => _sdllib;
 
-  int _sdl_internal = 0;
+  int _sdl_internal;
 
   DartSDL() {
     // Abro la libreria
-    String path = "./libs/libSDL2-2.0.so.0.9.0";
+    String path = "../../libs/libSDL2-2.0.so.0.9.0";
     _sdllib = DynamicLibrary.open(path);
   }
 
@@ -36,17 +40,67 @@ class DartSDL {
     SDL_Quit();
   }
 
+  String SDL_GetError() {
+    final SDL_GetError =
+        _sdllib.lookup<NativeFunction<sdl_geterror_func>>('SDL_GetError').asFunction<dart_SDL_GetError>();
+    final error = SDL_GetError();
+    return (Utf8.fromUtf8(error));
+  }
+
   int SDL_GetNumDisplayModes(int index) {
     final SDL_GetNumDisplaysModes = _sdllib
         .lookup<NativeFunction<sdl_getnumdisplaymodes_func>>('SDL_GetNumDisplayModes')
         .asFunction<dart_SDL_GetNumDisplayModes>();
-    return SDL_GetNumDisplaysModes(index);
+    final numdisplays = SDL_GetNumDisplaysModes(index);
+    return numdisplays;
   }
 
   int SDL_GetNumVideoDisplays() {
     final SDL_GetNumVideoDisplays = _sdllib
         .lookup<NativeFunction<sdl_getnumvideodisplays_func>>('SDL_GetNumVideoDisplays')
         .asFunction<dart_SDL_GetNumVideoDisplays>();
-    return SDL_GetNumVideoDisplays();
+    final numvideo = SDL_GetNumVideoDisplays();
+    return numvideo;
+  }
+
+  DisplayMode SDL_GetDesktopDisplayMode(int displayIndex) {
+    final SDL_GetDesktopDisplayMode = _sdllib
+        .lookup<NativeFunction<sdl_desktopdisplaymode_func>>("SDL_GetDesktopDisplayMode")
+        .asFunction<dart_SDL_GetDesktopDisplayMode>();
+    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    final desktopdisplaymode = SDL_GetDesktopDisplayMode(displayIndex, displaymode);
+    DisplayMode dm = null;
+    if (desktopdisplaymode == 0) {
+      dm = DisplayMode.fromPointer(displaymode);
+    }
+    return dm;
+  }
+
+  DisplayMode SDL_GetDisplayMode(int displayIndex, int modeIndex) {
+    final SDL_GetDisplayMode = _sdllib
+        .lookup<NativeFunction<sdl_getdisplaymode_func>>("SDL_GetDisplayMode")
+        .asFunction<dart_SDL_GetDisplayMode>();
+    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    final desktopdisplaymode = SDL_GetDisplayMode(displayIndex, modeIndex, displaymode);
+    DisplayMode dm = null;
+    if (desktopdisplaymode == 0) {
+      dm = DisplayMode.fromPointer(displaymode);
+    }
+    return dm;
+  }
+
+  void SDL_DisableScreenSaver() {
+    final SDL_DisableScreenSaver = _sdllib
+        .lookup<NativeFunction<sdl_disablescreensaver_func>>('SDL_DisableScreenSaver')
+        .asFunction<dart_SDL_DisableScreenSaver>();
+    SDL_DisableScreenSaver();
+  }
+
+  bool isInit() {
+    if (_sdl_internal == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

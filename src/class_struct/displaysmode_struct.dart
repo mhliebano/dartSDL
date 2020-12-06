@@ -24,4 +24,12 @@ class DisplayModeStruct extends Struct {
       ..refresh_rate = refresh_rate
       ..driverdata = driverdata;
   }
+  factory DisplayModeStruct() {
+    return allocate<DisplayModeStruct>().ref
+      ..format
+      ..w
+      ..h
+      ..refresh_rate
+      ..driverdata;
+  }
 }
