@@ -25,7 +25,7 @@ class Surface {
   }
 
   //Read Only
-  Rect get rect => Rect.fromStruct(_s.ref.SDL_Rect);
+  //Rect get rect => Rect.fromStruct(_s.ref.SDL_Rect);
 
   //Read Only
   PixelFormat get pixelFormat => PixelFormat.fromStruct(_s.ref.SDL_PixelFormat);

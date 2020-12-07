@@ -61,7 +61,7 @@ Functions
 -  SDL_CreateWindowFrom
 +  SDL_DestroyWindow             class Window.DestroyWindow
 +  SDL_DisableScreenSaver        class DartSDL.DisableScreenSaver
--  SDL_EnableScreenSaver
++  SDL_EnableScreenSaver         class DartSDL.EnableScreenSaver
 -  SDL_GL_CreateContext
 -  SDL_GL_DeleteContext
 -  SDL_GL_ExtensionSupported
@@ -79,18 +79,18 @@ Functions
 -  SDL_GL_SwapWindow
 -  SDL_GL_UnloadLibrary
 -  SDL_GetClosestDisplayMode
--  SDL_GetCurrentDisplayMode
--  SDL_GetCurrentVideoDriver
++  SDL_GetCurrentDisplayMode     class DartSDL.GetCurrentDisplayMode
++  SDL_GetCurrentVideoDriver     class DartSDL.GetCurrentVideoDriver
 +  SDL_GetDesktopDisplayMode     class DartSDL.GetDestktopDisplayMode
--  SDL_GetDisplayBounds
++  SDL_GetDisplayBounds          class DartSDL.GetDisplayBounds
 -  SDL_GetDisplayDPI
--  SDL_GetDisplayMode
--  SDL_GetDisplayName
--  SDL_GetDisplayUsableBounds
++  SDL_GetDisplayMode            class DartSDL.GetDisplayMode
++  SDL_GetDisplayName            class DartSDL.GetDisplayName
++  SDL_GetDisplayUsableBounds    class DartSDL.GetDislayUsableBounds
 -  SDL_GetGrabbedWindow
 +  SDL_GetNumDisplayModes        class DartSDL.GetNumDisplayModes
 +  SDL_GetNumVideoDisplays       class DartSDL.getNumVideoDisplays
--  SDL_GetNumVideoDrivers
++  SDL_GetNumVideoDrivers        class DartSDL.getNumVideoDrivers
 -  SDL_GetVideoDriver
 -  SDL_GetWindowBordersSize
 -  SDL_GetWindowBrightness

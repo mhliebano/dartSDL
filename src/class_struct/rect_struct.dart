@@ -21,4 +21,12 @@ class RectStruct extends Struct {
       ..w
       ..h;
   }
+
+  factory RectStruct() {
+    return allocate<RectStruct>().ref
+      ..x
+      ..y
+      ..w
+      ..h;
+  }
 }

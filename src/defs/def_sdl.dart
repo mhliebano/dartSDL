@@ -15,6 +15,7 @@ typedef dart_SDL_GetNumDisplayModes = int Function(int displayIndex);
 typedef sdl_getnumvideodisplays_func = Int32 Function();
 typedef dart_SDL_GetNumVideoDisplays = int Function();
 
-//SDL_DisableScreenSaver(void)
 typedef sdl_disablescreensaver_func = Void Function();
 typedef dart_SDL_DisableScreenSaver = void Function();
+typedef sdl_enablescreensaver_func = Void Function();
+typedef dart_SDL_EnableScreenSaver = void Function();

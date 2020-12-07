@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import '../../lib-ffi/ffi.dart';
 import '../class_struct/displaysmode_struct.dart';
+import '../class_struct/rect_struct.dart';
 import '../dartSDL.dart';
 import '../defs/def_display.dart';
 import '../defs/def_sdl.dart';
@@ -89,11 +90,81 @@ class DartSDL {
     return dm;
   }
 
+  DisplayMode SDL_GetCurrentDisplayMode(int displayIndex) {
+    final SDL_GetCurrentDisplayMode = _sdllib
+        .lookup<NativeFunction<sdl_getcurrentdisplaymode_func>>("SDL_GetCurrentDisplayMode")
+        .asFunction<dart_SDL_GetCurrentDisplayMode>();
+    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    final desktopdisplaymode = SDL_GetCurrentDisplayMode(displayIndex, displaymode);
+    DisplayMode dm = null;
+    if (desktopdisplaymode == 0) {
+      dm = DisplayMode.fromPointer(displaymode);
+    }
+    return dm;
+  }
+
+  Rect SDL_GetDisplayBounds(int displayIndex) {
+    final SDL_GetDisplayBounds = _sdllib
+        .lookup<NativeFunction<sdl_getdisplaybounds_func>>("SDL_GetDisplayBounds")
+        .asFunction<dart_SDL_GetDisplayBounds>();
+    Pointer<RectStruct> rectpointer = RectStruct().addressOf;
+    final rectbounds = SDL_GetDisplayBounds(displayIndex, rectpointer);
+    Rect rect = null;
+    if (rectbounds == 0) {
+      rect = Rect.fromPointer(rectpointer);
+    }
+    return rect;
+  }
+
+  String SDL_GetDisplayName(int displayIndex) {
+    final SDL_GetDisplayName = _sdllib
+        .lookup<NativeFunction<sdl_getdisplayname_func>>("SDL_GetDisplayName")
+        .asFunction<dart_SDL_GetDisplayName>();
+    final name = SDL_GetDisplayName(displayIndex);
+    return (Utf8.fromUtf8(name));
+  }
+
+  Rect SDL_GetDisplayUsableBounds(int displayIndex) {
+    final SDL_GetDisplayUsableBounds = _sdllib
+        .lookup<NativeFunction<sdl_getdisplayusablebounds_func>>("SDL_GetDisplayUsableBounds")
+        .asFunction<dart_SDL_GetDisplayUsableBounds>();
+    Pointer<RectStruct> rectpointer = RectStruct().addressOf;
+    final rectbounds = SDL_GetDisplayUsableBounds(displayIndex, rectpointer);
+    Rect rect = null;
+    if (rectbounds == 0) {
+      rect = Rect.fromPointer(rectpointer);
+    }
+    return rect;
+  }
+
+  String SDL_GetCurrentVideoDriver() {
+    final SDL_GetCurrentVideoDriver = _sdllib
+        .lookup<NativeFunction<sdl_getcurrentvideodriver_func>>("SDL_GetCurrentVideoDriver")
+        .asFunction<dart_SDL_GetCurrentVideoDriver>();
+    final name = SDL_GetCurrentVideoDriver();
+    return (Utf8.fromUtf8(name));
+  }
+
+  int SDL_GetNumVideoDrivers() {
+    final SDL_GetNumVideoDriver = _sdllib
+        .lookup<NativeFunction<sdl_getnumvideodrivers_func>>('SDL_GetNumVideoDrivers')
+        .asFunction<dart_SDL_GetNumVideoDrivers>();
+    final numvideo = SDL_GetNumVideoDriver();
+    return numvideo;
+  }
+
   void SDL_DisableScreenSaver() {
     final SDL_DisableScreenSaver = _sdllib
         .lookup<NativeFunction<sdl_disablescreensaver_func>>('SDL_DisableScreenSaver')
         .asFunction<dart_SDL_DisableScreenSaver>();
     SDL_DisableScreenSaver();
+  }
+
+  void SDL_EnableScreenSaver() {
+    final SDL_EnableScreenSaver = _sdllib
+        .lookup<NativeFunction<sdl_enablescreensaver_func>>('SDL_EnableScreenSaver')
+        .asFunction<dart_SDL_EnableScreenSaver>();
+    SDL_EnableScreenSaver();
   }
 
   bool isInit() {
