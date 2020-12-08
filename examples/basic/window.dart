@@ -7,7 +7,7 @@ void main() async {
   //Objetos
   Window window = Window();
   window.setDimension(800, 600); //Seteo parametros de la ventana
-
+  window.setWindowFlag = Window.SDL_WINDOW_OPENGL;
   print(dartSDL.SDL_GetNumVideoDisplays());
 
   dartSDL.SDL_Init(); //Se inicializa el SDL
