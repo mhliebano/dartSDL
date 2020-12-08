@@ -38,6 +38,11 @@ void main() async {
   int numdriver = dartSDL.SDL_GetNumVideoDrivers();
   print("Number Drivers:  $numdriver");
 
+  print("Drivers Avaibles");
+  for (int i = 0; i < numdriver; i++) {
+    print("$i) ${dartSDL.SDL_GetVideoDriver(i)}");
+  }
+
   DisplayMode current_display = dartSDL.SDL_GetCurrentDisplayMode(0);
   print("Mode Current:, ${current_display.format},${current_display.width},${current_display.heigth}");
 

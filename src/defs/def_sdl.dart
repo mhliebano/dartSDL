@@ -8,13 +8,8 @@ typedef sdl_quit_func = Void Function();
 typedef dart_SDL_Quit = void Function();
 typedef sdl_geterror_func = Pointer<Utf8> Function();
 typedef dart_SDL_GetError = Pointer<Utf8> Function();
-//
-//SDL Functions
-typedef sdl_getnumdisplaymodes_func = Int32 Function(Int32 displayIndex);
-typedef dart_SDL_GetNumDisplayModes = int Function(int displayIndex);
-typedef sdl_getnumvideodisplays_func = Int32 Function();
-typedef dart_SDL_GetNumVideoDisplays = int Function();
 
+//SDL Function
 typedef sdl_disablescreensaver_func = Void Function();
 typedef dart_SDL_DisableScreenSaver = void Function();
 typedef sdl_enablescreensaver_func = Void Function();

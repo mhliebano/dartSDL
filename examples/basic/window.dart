@@ -12,7 +12,10 @@ void main() async {
 
   dartSDL.SDL_Init(); //Se inicializa el SDL
   window.SDL_CreateWindow("Ventana SDL"); //Creo la Ventana
-  print(dartSDL.SDL_GetNumDisplayModes(0));
+  print(window.SDL_GetWindowBrightness());
+  print(window.SDL_GetWindowDisplayIndex());
+  DisplayMode dm = window.SDL_GetWindowDisplayMode();
+  print(dm.width);
   sleep(Duration(seconds: 5));
 
   window.SDL_DestroyWindow(); //Elimino la ventana

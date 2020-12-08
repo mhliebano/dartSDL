@@ -91,12 +91,12 @@ Functions
 +  SDL_GetNumDisplayModes        class DartSDL.GetNumDisplayModes
 +  SDL_GetNumVideoDisplays       class DartSDL.getNumVideoDisplays
 +  SDL_GetNumVideoDrivers        class DartSDL.getNumVideoDrivers
--  SDL_GetVideoDriver
++  SDL_GetVideoDriver            class DartSDL.getVideoDriver
 -  SDL_GetWindowBordersSize
--  SDL_GetWindowBrightness
++  SDL_GetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_GetWindowData
--  SDL_GetWindowDisplayIndex
--  SDL_GetWindowDisplayMode
++  SDL_GetWindowDisplayIndex     class Window.GetWindowDisplayIndex
++  SDL_GetWindowDisplayMode      class Window.GetWindowDisplayMode
 -  SDL_GetWindowFlags
 -  SDL_GetWindowFromID
 -  SDL_GetWindowGammaRamp

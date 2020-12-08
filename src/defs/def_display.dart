@@ -4,6 +4,12 @@ import '../../lib-ffi/src/utf8.dart';
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/rect_struct.dart';
 
+typedef sdl_getnumdisplaymodes_func = Int32 Function(Int32 displayIndex);
+typedef dart_SDL_GetNumDisplayModes = int Function(int displayIndex);
+
+typedef sdl_getnumvideodisplays_func = Int32 Function();
+typedef dart_SDL_GetNumVideoDisplays = int Function();
+
 typedef sdl_desktopdisplaymode_func = Int32 Function(Int32 displayIndex, Pointer<DisplayModeStruct> displayMode);
 typedef dart_SDL_GetDesktopDisplayMode = int Function(int displayIndex, Pointer<DisplayModeStruct> displayMode);
 
@@ -11,7 +17,7 @@ typedef sdl_getdisplaymode_func = Int32 Function(
     Int32 displayIndex, Int32 modeIndex, Pointer<DisplayModeStruct> displayMode);
 typedef dart_SDL_GetDisplayMode = int Function(int displayIndex, int modeIndex, Pointer<DisplayModeStruct> displayMode);
 
-//SDL_GetCurrentDisplayMode(int displayIndex,SDL_DisplayMode* mode)
+//int SDL_GetCurrentDisplayMode(int displayIndex,SDL_DisplayMode* mode)
 typedef sdl_getcurrentdisplaymode_func = Int32 Function(Int32 displayIndex, Pointer<DisplayModeStruct> displayMode);
 typedef dart_SDL_GetCurrentDisplayMode = int Function(int displayIndex, Pointer<DisplayModeStruct> displayMode);
 
@@ -34,3 +40,7 @@ typedef dart_SDL_GetCurrentVideoDriver = Pointer<Utf8> Function();
 //int SDL_GetNumVideoDrivers(void)
 typedef sdl_getnumvideodrivers_func = Int32 Function();
 typedef dart_SDL_GetNumVideoDrivers = int Function();
+
+//const char* SDL_GetVideoDriver(int index)
+typedef sdl_getvideodriver_func = Pointer<Utf8> Function(Int32 index);
+typedef dart_SDL_GetVideoDriver = Pointer<Utf8> Function(int index);

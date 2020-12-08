@@ -142,7 +142,7 @@ class DartSDL {
         .lookup<NativeFunction<sdl_getcurrentvideodriver_func>>("SDL_GetCurrentVideoDriver")
         .asFunction<dart_SDL_GetCurrentVideoDriver>();
     final name = SDL_GetCurrentVideoDriver();
-    return (Utf8.fromUtf8(name));
+    return Utf8.fromUtf8(name);
   }
 
   int SDL_GetNumVideoDrivers() {
@@ -151,6 +151,19 @@ class DartSDL {
         .asFunction<dart_SDL_GetNumVideoDrivers>();
     final numvideo = SDL_GetNumVideoDriver();
     return numvideo;
+  }
+
+  ///Use this function to get the name of a built in video driver.
+  ///
+  ///index = the [int]index of a video driver
+  ///
+  ///Returns the [String]name of the video driver with the given index.
+  String SDL_GetVideoDriver(int index) {
+    final SDL_GetVideoDriver = _sdllib
+        .lookup<NativeFunction<sdl_getvideodriver_func>>("SDL_GetVideoDriver")
+        .asFunction<dart_SDL_GetVideoDriver>();
+    final name = SDL_GetVideoDriver(index);
+    return Utf8.fromUtf8(name);
   }
 
   void SDL_DisableScreenSaver() {
