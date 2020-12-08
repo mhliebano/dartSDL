@@ -122,7 +122,6 @@ class Window {
   ///
   /// Returns the [double]brightness for the display where 0.0 is completely dark and 1.0 is normal brightness.
   ///
-
   double SDL_GetWindowBrightness() {
     final SDL_GetWindowBrightness = _sdllib
         .lookup<NativeFunction<sld_getwindowbrightness_func>>("SDL_GetWindowBrightness")
@@ -163,5 +162,49 @@ class Window {
       print(dartSDL.SDL_GetError());
     }
     return dm;
+  }
+
+  ///Use this function to get the opacity of a window.
+  ///
+  ///Returns a negative error code on failure; call SDL_GetError() for more information.
+  ///
+  double SDL_GetWindowOpacity() {
+    final SDL_GetWindowOpacity = _sdllib
+        .lookup<NativeFunction<sld_getwindowopacity_func>>("SDL_GetWindowOpacity")
+        .asFunction<dart_SDL_GetWindowOpacity>();
+    Pointer<Float> op = allocate();
+    int opac = SDL_GetWindowOpacity(_window_internal, op);
+    if (opac < 0) {
+      print(dartSDL.SDL_GetError());
+    }
+    return op.value;
+  }
+
+  ///Use this function to set the brightness (gamma multiplier) for the display that owns a given window.
+  ///
+  ///[double]brightness the brightness (gamma multiplier) value to set where 0.0 is completely dark and 1.0 is normal brightness
+  ///
+  void SDL_SetWindowBrightness(double brightness) {
+    final SDL_SetWindowBrightness = _sdllib
+        .lookup<NativeFunction<sld_setwindowbrightness_func>>("SDL_SetWindowBrightness")
+        .asFunction<dart_SDL_SetWindowBrightness>();
+    int brig = SDL_SetWindowBrightness(_window_internal, brightness);
+    if (brig < 0) {
+      print(dartSDL.SDL_GetError());
+    }
+  }
+
+  ///Use this function to set the opacity for a window.
+  ///
+  ///Returns a negative error code on failure; call SDL_GetError() for more information.
+  ///
+  void SDL_SetWindowOpacity(double opacity) {
+    final SDL_SetWindowOpacity = _sdllib
+        .lookup<NativeFunction<sld_setwindowopacity_func>>("SDL_SetWindowOpacity")
+        .asFunction<dart_SDL_SetWindowOpacity>();
+    int opac = SDL_SetWindowOpacity(_window_internal, opacity);
+    if (opac < 0) {
+      print(dartSDL.SDL_GetError());
+    }
   }
 }

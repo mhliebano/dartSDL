@@ -104,7 +104,7 @@ Functions
 -  SDL_GetWindowID
 -  SDL_GetWindowMaximumSize
 -  SDL_GetWindowMinimumSize
--  SDL_GetWindowOpacity
++  SDL_GetWindowOpacity          class Window.GetWindowOpacity
 -  SDL_GetWindowPixelFormat
 -  SDL_GetWindowPosition
 -  SDL_GetWindowSize
@@ -118,7 +118,7 @@ Functions
 -  SDL_RaiseWindow
 -  SDL_RestoreWindow
 -  SDL_SetWindowBordered
--  SDL_SetWindowBrightness
++  SDL_SetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_SetWindowData
 -  SDL_SetWindowDisplayMode
 -  SDL_SetWindowFullscreen
@@ -130,7 +130,7 @@ Functions
 -  SDL_SetWindowMaximumSize
 -  SDL_SetWindowMinimumSize
 -  SDL_SetWindowModalFor
--  SDL_SetWindowOpacity
++  SDL_SetWindowOpacity          class Window.SetWindowOpacity
 -  SDL_SetWindowPosition
 -  SDL_SetWindowResizable
 +  SDL_SetWindowSize             class Window.SetWindowSize

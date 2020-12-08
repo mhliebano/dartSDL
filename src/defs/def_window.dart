@@ -26,3 +26,15 @@ typedef dart_SDL_GetWindowDisplayIndex = int Function(Pointer<Uint64> window);
 //int SDL_GetWindowDisplayMode(SDL_Window* window,SDL_DisplayMode* mode)
 typedef sld_getwindowdisplaymode_func = Int32 Function(Pointer<Uint64> window, Pointer<DisplayModeStruct> displayMode);
 typedef dart_SDL_GetWindowDisplayMode = int Function(Pointer<Uint64> window, Pointer<DisplayModeStruct> displayMode);
+
+//int SDL_GetWindowOpacity(SDL_Window* window)
+typedef sld_getwindowopacity_func = Int32 Function(Pointer<Uint64> window, Pointer<Float> opacity);
+typedef dart_SDL_GetWindowOpacity = int Function(Pointer<Uint64> window, Pointer<Float> opacity);
+
+//int SDL_SetWindowBrightness(SDL_Window* window,float brightness)
+typedef sld_setwindowbrightness_func = Int32 Function(Pointer<Uint64> window, Float brightness);
+typedef dart_SDL_SetWindowBrightness = int Function(Pointer<Uint64> window, double brightness);
+
+//int SDL_SetWindowOpacity(SDL_Window* window,float opacity)
+typedef sld_setwindowopacity_func = Int32 Function(Pointer<Uint64> window, Float brightness);
+typedef dart_SDL_SetWindowOpacity = int Function(Pointer<Uint64> window, double brightness);

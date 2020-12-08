@@ -4,7 +4,7 @@ void main() async {
   DartSDL sdl = DartSDL();
   bool run = true;
   Window w = Window();
-  w.setWindowFlag = w.SDL_WINDOW_OPENGL;
+  w.setWindowFlag = Window.SDL_WINDOW_OPENGL;
   w.setDimension(400, 300);
   w.setPosition(50, 50);
 
