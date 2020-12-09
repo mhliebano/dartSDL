@@ -43,6 +43,23 @@ class DartSDL {
     SDL_Quit();
   }
 
+  void SDL_InitSubSystem(int flag) {
+    final SDL_InitSubSystem = _sdllib
+        .lookup<NativeFunction<sdl_initsubsystem_func>>('SDL_InitSubSystem')
+        .asFunction<dart_SDL_InitSubSystem>();
+    _sdl_internal = SDL_InitSubSystem(flag);
+    if (_sdl_internal != 0) {
+      print(SDL_GetError());
+    }
+  }
+
+  void SDL_QuitSubSystem(int flag) {
+    final SDL_QuitSubSystem = _sdllib
+        .lookup<NativeFunction<sdl_quitsubsystem_func>>('SDL_QuitSubSystem')
+        .asFunction<dart_SDL_QuitSubSystem>();
+    SDL_QuitSubSystem(flag);
+  }
+
   String SDL_GetError() {
     final SDL_GetError =
         _sdllib.lookup<NativeFunction<sdl_geterror_func>>('SDL_GetError').asFunction<dart_SDL_GetError>();

@@ -11,9 +11,9 @@ http://wiki.libsdl.org/APIByCategory
 Functions
 ```diff
 + SDL_Init                       class DartSDL.Init 
-- SDL_InitSubSystem
++ SDL_InitSubSystem              class DartSDL.InitSubSystem
 + SDL_Quit                       class DartSDL.Quit
-- SDL_QuitSubSystem
++ SDL_QuitSubSystem              class DartSDL.QuitSubSystem
 - SDL_SetMainReady
 - SDL_WasInit
 - SDL_WinRTRunApp
