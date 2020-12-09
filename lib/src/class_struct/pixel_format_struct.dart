@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+import 'package:ffi/ffi.dart';
 import 'palette_struct.dart';
 
 class PixelFormatStruct extends Struct {

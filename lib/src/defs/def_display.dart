@@ -1,6 +1,5 @@
 import 'dart:ffi';
-
-import '../../lib-ffi/src/utf8.dart';
+import 'package:ffi/ffi.dart';
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/rect_struct.dart';
 

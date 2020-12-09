@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+import 'package:ffi/ffi.dart';
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/surface_struct.dart';
 
@@ -38,3 +38,11 @@ typedef dart_SDL_SetWindowBrightness = int Function(Pointer<Uint64> window, doub
 //int SDL_SetWindowOpacity(SDL_Window* window,float opacity)
 typedef sld_setwindowopacity_func = Int32 Function(Pointer<Uint64> window, Float brightness);
 typedef dart_SDL_SetWindowOpacity = int Function(Pointer<Uint64> window, double brightness);
+
+//void* SDL_GetWindowData(SDL_Window* window, const char* name)
+typedef sld_getwindowdata_func = Void Function(Pointer<Uint64> window, Pointer<Utf8> name);
+typedef dart_SDL_GetWindowData = void Function(Pointer<Uint64> window, Pointer<Utf8> name);
+
+///void* SDL_SetWindowData(SDL_Window* window, const char* name,void* userdata)
+typedef sld_setwindowdata_func = Void Function(Pointer<Uint64> window, Pointer<Utf8> name, Pointer<Int32> userdata);
+typedef dart_SDL_SetWindowData = void Function(Pointer<Uint64> window, Pointer<Utf8> name, Pointer<Int32> userdata);

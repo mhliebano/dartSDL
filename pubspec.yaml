@@ -1,0 +1,10 @@
+name: dartSDL
+version: 0.1.1
+description: >-
+  Binding to SDL Library in pure Dart
+homepage: https://github/mhliebano/dartSDL
+documentation: https://github/mhliebano/dartSDL/doc
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+dependencies:
+  ffi: ^0.1.3

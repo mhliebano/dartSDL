@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+import 'package:ffi/ffi.dart';
 import 'pixel_format_struct.dart';
 import 'rect_struct.dart';
 

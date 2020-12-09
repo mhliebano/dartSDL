@@ -1,6 +1,5 @@
 import 'dart:io';
-import '../../src/dartSDL.dart';
-import '../../src/defs/def_display.dart';
+import 'package:dartSDL/dartSDL.dart';
 
 void main() async {
   //Objetos

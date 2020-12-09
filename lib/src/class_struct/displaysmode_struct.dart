@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+import 'package:ffi/ffi.dart';
 
 class DisplayModeStruct extends Struct {
   @Uint32()

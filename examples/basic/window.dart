@@ -1,10 +1,9 @@
 import 'dart:io';
-
-import '../../src/dartSDL.dart';
-import '../../src/defs/def_sdl.dart';
+import 'package:dartSDL/dartSDL.dart';
 
 void main() async {
   //Objetos
+
   Window window = Window();
   window.setDimension(800, 600); //Seteo parametros de la ventana
   window.setWindowFlag = Window.SDL_WINDOW_OPENGL;
@@ -14,6 +13,9 @@ void main() async {
   print(window.SDL_GetWindowOpacity());
   window.SDL_SetWindowOpacity(0.0);
   print(window.SDL_GetWindowOpacity());
+  print("_______________");
+  window.SDL_SetWindowData("testdatapointer", 1234);
+  print(window.SDL_GetWindowData());
 
   //print(window.SDL_GetWindowDisplayIndex());
   //DisplayMode dm = window.SDL_GetWindowDisplayMode();

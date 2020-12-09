@@ -1,8 +1,10 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+
+import 'package:ffi/ffi.dart';
+import 'package:dartSDL/dartSDL.dart';
+
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/surface_struct.dart';
-import '../dartSDL.dart';
 import '../defs/def_window.dart';
 
 class Window {
@@ -206,5 +208,30 @@ class Window {
     if (opac < 0) {
       print(dartSDL.SDL_GetError());
     }
+  }
+
+  ///Use this function to retrieve the data pointer associated with a window.
+  ///
+  ///Returns the value associated with name.
+  ///
+  String SDL_GetWindowData() {
+    final SDL_GetWindowData = _sdllib
+        .lookup<NativeFunction<sld_getwindowdata_func>>("SDL_GetWindowData")
+        .asFunction<dart_SDL_GetWindowData>();
+    Pointer<Utf8> namepointer = allocate<Utf8>();
+    SDL_GetWindowData(_window_internal, namepointer);
+    print(Utf8.strlen(namepointer));
+    return "ok"; //Utf8.fromUtf8(namepointer);
+  }
+
+  void SDL_SetWindowData(String variable, var data) {
+    final SDL_SetWindowData = _sdllib
+        .lookup<NativeFunction<sld_setwindowdata_func>>("SDL_SetWindowData")
+        .asFunction<dart_SDL_SetWindowData>();
+
+    Pointer<Utf8> namepointer = Utf8.toUtf8(variable);
+    Pointer<Int32> datapointer = Pointer.fromAddress(data);
+    SDL_SetWindowData(_window_internal, namepointer, datapointer);
+    //return Utf8.fromUtf8(namepointer);
   }
 }

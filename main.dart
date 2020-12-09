@@ -1,4 +1,4 @@
-import 'src/dartSDL.dart';
+import 'package:dartSDL/dartSDL.dart';
 
 void main() async {
   DartSDL sdl = DartSDL();

@@ -1,8 +1,10 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+
+import 'package:ffi/ffi.dart';
+import 'package:dartSDL/dartSDL.dart';
+
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/rect_struct.dart';
-import '../dartSDL.dart';
 import '../defs/def_display.dart';
 import '../defs/def_sdl.dart';
 

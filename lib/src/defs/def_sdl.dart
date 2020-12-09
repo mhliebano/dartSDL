@@ -1,5 +1,5 @@
 import 'dart:ffi';
-import '../../lib-ffi/ffi.dart';
+import 'package:ffi/ffi.dart';
 
 //SDL INITIALIZATION
 typedef sdl_init_func = Int32 Function(Int32 a);
