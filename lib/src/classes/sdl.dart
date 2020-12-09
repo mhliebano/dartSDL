@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:ffi/ffi.dart';
 import 'package:dartSDL/dartSDL.dart';
@@ -25,9 +26,8 @@ class DartSDL {
   int _sdl_internal;
 
   DartSDL() {
-    // Abro la libreria
-    String path = "../../libs/libSDL2-2.0.so.0.9.0";
-    _sdllib = DynamicLibrary.open(path);
+    String pathsdllib = Directory.current.path;
+    _sdllib = DynamicLibrary.open("$pathsdllib/libsdl/libSDL2-2.0.so.0.9.0");
   }
 
   void SDL_Init() {
