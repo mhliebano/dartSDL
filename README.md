@@ -97,11 +97,11 @@ Functions
 -  SDL_GetWindowData
 +  SDL_GetWindowDisplayIndex     class Window.GetWindowDisplayIndex
 +  SDL_GetWindowDisplayMode      class Window.GetWindowDisplayMode
--  SDL_GetWindowFlags
++  SDL_GetWindowFlags            class Window.GetWindowFlags
 -  SDL_GetWindowFromID
 -  SDL_GetWindowGammaRamp
 -  SDL_GetWindowGrab
--  SDL_GetWindowID
++  SDL_GetWindowID              class Window.GetWindowId
 -  SDL_GetWindowMaximumSize
 -  SDL_GetWindowMinimumSize
 +  SDL_GetWindowOpacity          class Window.GetWindowOpacity
@@ -120,7 +120,7 @@ Functions
 -  SDL_SetWindowBordered
 +  SDL_SetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_SetWindowData
--  SDL_SetWindowDisplayMode
++  SDL_SetWindowDisplayMode      class Window.SetWindowDisplayMode
 -  SDL_SetWindowFullscreen
 -  SDL_SetWindowGammaRamp
 -  SDL_SetWindowGrab

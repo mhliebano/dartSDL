@@ -1,4 +1,7 @@
 import 'dart:ffi';
+import 'dart:typed_data';
+
+import 'package:ffi/ffi.dart';
 
 import '../class_struct/displaysmode_struct.dart';
 
@@ -46,17 +49,20 @@ class DisplayMode {
 // SDL_PIXELFORMAT_NV12
 // SDL_PIXELFORMAT_NV21
 
-  int _format;
+  int _format = 0;
   get format => _format;
 
-  int _width;
+  int _width = 0;
   get width => _width;
 
-  int _heigth;
+  int _heigth = 0;
   get heigth => _heigth;
 
-  int _refresh_rate;
+  int _refresh_rate = 0;
   get refresh_rate => _refresh_rate;
+
+  var _driver_data = 0;
+  get driverdata => _driver_data;
 
   DisplayMode() {}
 
@@ -66,6 +72,7 @@ class DisplayMode {
     _width = displayMode.ref.w;
     _heigth = displayMode.ref.h;
     _refresh_rate = displayMode.ref.refresh_rate;
+    _driver_data = displayMode.cast<Uint32>().value;
   }
   factory DisplayMode.fromPointer(Pointer<DisplayModeStruct> displayMode) {
     return DisplayMode._fromPointer(displayMode);

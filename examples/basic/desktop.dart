@@ -20,13 +20,13 @@ void main() async {
   }
   print("SDL_GetNumDisplayModes: ${display_mode_count}");
 
-  for (int i = 0; i < display_mode_count; ++i) {
-    DisplayMode displayMode = display.SDL_GetDisplayMode(display_in_use, i);
-    print("Mode:$i, ${displayMode.format},${displayMode.width},${displayMode.heigth}");
-    //f = mode.format;
+  // for (int i = 0; i < display_mode_count; ++i) {
+  //   DisplayMode displayMode = display.SDL_GetDisplayMode(display_in_use, i);
+  //   print("Mode:$i, ${displayMode.format},${displayMode.width},${displayMode.heigth}");
+  //   //f = mode.format;
 
-    //SDL_Log("Mode %i\tbpp %i\t%s\t%i x %i", i, SDL_BITSPERPIXEL(f), SDL_GetPixelFormatName(f), mode.w, mode.h);
-  }
+  //   //SDL_Log("Mode %i\tbpp %i\t%s\t%i x %i", i, SDL_BITSPERPIXEL(f), SDL_GetPixelFormatName(f), mode.w, mode.h);
+  // }
 
   String displayname = display.SDL_GetDisplayName(0);
   print("Displayname:, $displayname");
@@ -43,6 +43,7 @@ void main() async {
   }
 
   DisplayMode current_display = display.SDL_GetCurrentDisplayMode(0);
+  print(current_display.driverdata);
   print("Mode Current:, ${current_display.format},${current_display.width},${current_display.heigth}");
 
   Rect rect = display.SDL_GetDisplayBounds(0);
