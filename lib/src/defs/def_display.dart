@@ -43,3 +43,8 @@ typedef dart_SDL_GetNumVideoDrivers = int Function();
 //const char* SDL_GetVideoDriver(int index)
 typedef sdl_getvideodriver_func = Pointer<Utf8> Function(Int32 index);
 typedef dart_SDL_GetVideoDriver = Pointer<Utf8> Function(int index);
+
+typedef sdl_disablescreensaver_func = Void Function();
+typedef dart_SDL_DisableScreenSaver = void Function();
+typedef sdl_enablescreensaver_func = Void Function();
+typedef dart_SDL_EnableScreenSaver = void Function();

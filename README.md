@@ -15,7 +15,7 @@ Functions
 + SDL_Quit                       class DartSDL.Quit
 + SDL_QuitSubSystem              class DartSDL.QuitSubSystem
 - SDL_SetMainReady
-- SDL_WasInit
++ SDL_WasInit                    class DartSDL.WasInit
 - SDL_WinRTRunApp
 ```
 
@@ -60,8 +60,8 @@ Functions
 -  SDL_CreateWindowAndRenderer
 -  SDL_CreateWindowFrom
 +  SDL_DestroyWindow             class Window.DestroyWindow
-+  SDL_DisableScreenSaver        class DartSDL.DisableScreenSaver
-+  SDL_EnableScreenSaver         class DartSDL.EnableScreenSaver
++  SDL_DisableScreenSaver        class Video.DisableScreenSaver
++  SDL_EnableScreenSaver         class Video.EnableScreenSaver
 -  SDL_GL_CreateContext
 -  SDL_GL_DeleteContext
 -  SDL_GL_ExtensionSupported
@@ -79,19 +79,19 @@ Functions
 -  SDL_GL_SwapWindow
 -  SDL_GL_UnloadLibrary
 -  SDL_GetClosestDisplayMode
-+  SDL_GetCurrentDisplayMode     class DartSDL.GetCurrentDisplayMode
-+  SDL_GetCurrentVideoDriver     class DartSDL.GetCurrentVideoDriver
-+  SDL_GetDesktopDisplayMode     class DartSDL.GetDestktopDisplayMode
-+  SDL_GetDisplayBounds          class DartSDL.GetDisplayBounds
++  SDL_GetCurrentDisplayMode     class Video.GetCurrentDisplayMode
++  SDL_GetCurrentVideoDriver     class Video.GetCurrentVideoDriver
++  SDL_GetDesktopDisplayMode     class Video.GetDestktopDisplayMode
++  SDL_GetDisplayBounds          class Video.GetDisplayBounds
 -  SDL_GetDisplayDPI
-+  SDL_GetDisplayMode            class DartSDL.GetDisplayMode
-+  SDL_GetDisplayName            class DartSDL.GetDisplayName
-+  SDL_GetDisplayUsableBounds    class DartSDL.GetDislayUsableBounds
++  SDL_GetDisplayMode            class Video.GetDisplayMode
++  SDL_GetDisplayName            class Video.GetDisplayName
++  SDL_GetDisplayUsableBounds    class Video.GetDislayUsableBounds
 -  SDL_GetGrabbedWindow
-+  SDL_GetNumDisplayModes        class DartSDL.GetNumDisplayModes
-+  SDL_GetNumVideoDisplays       class DartSDL.getNumVideoDisplays
-+  SDL_GetNumVideoDrivers        class DartSDL.getNumVideoDrivers
-+  SDL_GetVideoDriver            class DartSDL.getVideoDriver
++  SDL_GetNumDisplayModes        class Video.GetNumDisplayModes
++  SDL_GetNumVideoDisplays       class Video.getNumVideoDisplays
++  SDL_GetNumVideoDrivers        class Video.getNumVideoDrivers
++  SDL_GetVideoDriver            class Video.getVideoDriver
 -  SDL_GetWindowBordersSize
 +  SDL_GetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_GetWindowData

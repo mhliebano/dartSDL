@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:dartSDL/dartSDL.dart';
 
+import '../../dartSDL.dart';
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/surface_struct.dart';
 import '../defs/def_window.dart';

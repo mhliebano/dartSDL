@@ -17,8 +17,6 @@ typedef dart_SDL_InitSubSystem = int Function(int flag);
 typedef sdl_quitsubsystem_func = Void Function(Int32 flag);
 typedef dart_SDL_QuitSubSystem = void Function(int flag);
 
-//SDL Function
-typedef sdl_disablescreensaver_func = Void Function();
-typedef dart_SDL_DisableScreenSaver = void Function();
-typedef sdl_enablescreensaver_func = Void Function();
-typedef dart_SDL_EnableScreenSaver = void Function();
+//Uint32 SDL_WasInit(Uint32 flags)
+typedef sdl_wasinit_func = Int32 Function(Int32 flags);
+typedef dart_SDL_WasInit = int Function(int flags);
