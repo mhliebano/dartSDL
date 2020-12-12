@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:dartSDL/src/classes/window.dart';
 import 'package:ffi/ffi.dart';
 
 import '../defs/def_sdl.dart';
@@ -80,11 +81,15 @@ class DartSDL {
     return (Utf8.fromUtf8(error));
   }
 
-  bool isInit() {
-    if (_sdl_internal == 0) {
-      return true;
+  Window SDL_GetWindowFromId(int id) {
+    final SDL_GetWindowFromId = _sdllib
+        .lookup<NativeFunction<sdl_getwindowfromid_func>>('SDL_GetWidnowFromId')
+        .asFunction<dart_SDL_GetWindowFromId>();
+    Pointer<Uint64> window = SDL_GetWindowFromId(id);
+    if (window == null) {
+      throw ("La ventana no existe");
     } else {
-      return false;
+      return Window();
     }
   }
 }

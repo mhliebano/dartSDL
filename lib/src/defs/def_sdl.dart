@@ -20,3 +20,7 @@ typedef dart_SDL_QuitSubSystem = void Function(int flag);
 //Uint32 SDL_WasInit(Uint32 flags)
 typedef sdl_wasinit_func = Int32 Function(Int32 flags);
 typedef dart_SDL_WasInit = int Function(int flags);
+
+//SDL_Window* SDL_GetWindowFromID(Uint32 id)
+typedef sdl_getwindowfromid_func = Pointer<Uint64> Function(Int32 id);
+typedef dart_SDL_GetWindowFromId = Pointer<Uint64> Function(int id);

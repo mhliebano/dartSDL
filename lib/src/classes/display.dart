@@ -12,7 +12,7 @@ class Display {
   Display() {
     _sdllib = dartSDL.sdllib;
   }
-  int SDL_GetNumDisplayModes(int index) {
+  int GetNumDisplayModes(int index) {
     final SDL_GetNumDisplaysModes = _sdllib
         .lookup<NativeFunction<sdl_getnumdisplaymodes_func>>('SDL_GetNumDisplayModes')
         .asFunction<dart_SDL_GetNumDisplayModes>();
@@ -20,7 +20,7 @@ class Display {
     return numdisplays;
   }
 
-  int SDL_GetNumVideoDisplays() {
+  int GetNumVideoDisplays() {
     final SDL_GetNumVideoDisplays = _sdllib
         .lookup<NativeFunction<sdl_getnumvideodisplays_func>>('SDL_GetNumVideoDisplays')
         .asFunction<dart_SDL_GetNumVideoDisplays>();
@@ -28,7 +28,7 @@ class Display {
     return numvideo;
   }
 
-  DisplayMode SDL_GetDesktopDisplayMode(int displayIndex) {
+  DisplayMode GetDesktopDisplayMode(int displayIndex) {
     final SDL_GetDesktopDisplayMode = _sdllib
         .lookup<NativeFunction<sdl_desktopdisplaymode_func>>("SDL_GetDesktopDisplayMode")
         .asFunction<dart_SDL_GetDesktopDisplayMode>();
@@ -41,7 +41,7 @@ class Display {
     return dm;
   }
 
-  DisplayMode SDL_GetDisplayMode(int displayIndex, int modeIndex) {
+  DisplayMode GetDisplayMode(int displayIndex, int modeIndex) {
     final SDL_GetDisplayMode = _sdllib
         .lookup<NativeFunction<sdl_getdisplaymode_func>>("SDL_GetDisplayMode")
         .asFunction<dart_SDL_GetDisplayMode>();
@@ -54,7 +54,7 @@ class Display {
     return dm;
   }
 
-  DisplayMode SDL_GetCurrentDisplayMode(int displayIndex) {
+  DisplayMode GetCurrentDisplayMode(int displayIndex) {
     final SDL_GetCurrentDisplayMode = _sdllib
         .lookup<NativeFunction<sdl_getcurrentdisplaymode_func>>("SDL_GetCurrentDisplayMode")
         .asFunction<dart_SDL_GetCurrentDisplayMode>();
@@ -67,7 +67,7 @@ class Display {
     return dm;
   }
 
-  Rect SDL_GetDisplayBounds(int displayIndex) {
+  Rect GetDisplayBounds(int displayIndex) {
     final SDL_GetDisplayBounds = _sdllib
         .lookup<NativeFunction<sdl_getdisplaybounds_func>>("SDL_GetDisplayBounds")
         .asFunction<dart_SDL_GetDisplayBounds>();
@@ -80,7 +80,7 @@ class Display {
     return rect;
   }
 
-  String SDL_GetDisplayName(int displayIndex) {
+  String GetDisplayName(int displayIndex) {
     final SDL_GetDisplayName = _sdllib
         .lookup<NativeFunction<sdl_getdisplayname_func>>("SDL_GetDisplayName")
         .asFunction<dart_SDL_GetDisplayName>();
@@ -88,7 +88,7 @@ class Display {
     return (Utf8.fromUtf8(name));
   }
 
-  Rect SDL_GetDisplayUsableBounds(int displayIndex) {
+  Rect GetDisplayUsableBounds(int displayIndex) {
     final SDL_GetDisplayUsableBounds = _sdllib
         .lookup<NativeFunction<sdl_getdisplayusablebounds_func>>("SDL_GetDisplayUsableBounds")
         .asFunction<dart_SDL_GetDisplayUsableBounds>();
@@ -101,7 +101,7 @@ class Display {
     return rect;
   }
 
-  String SDL_GetCurrentVideoDriver() {
+  String GetCurrentVideoDriver() {
     final SDL_GetCurrentVideoDriver = _sdllib
         .lookup<NativeFunction<sdl_getcurrentvideodriver_func>>("SDL_GetCurrentVideoDriver")
         .asFunction<dart_SDL_GetCurrentVideoDriver>();
@@ -109,7 +109,7 @@ class Display {
     return Utf8.fromUtf8(name);
   }
 
-  int SDL_GetNumVideoDrivers() {
+  int GetNumVideoDrivers() {
     final SDL_GetNumVideoDriver = _sdllib
         .lookup<NativeFunction<sdl_getnumvideodrivers_func>>('SDL_GetNumVideoDrivers')
         .asFunction<dart_SDL_GetNumVideoDrivers>();
@@ -122,7 +122,7 @@ class Display {
   ///index = the [int]index of a video driver
   ///
   ///Returns the [String]name of the video driver with the given index.
-  String SDL_GetVideoDriver(int index) {
+  String GetVideoDriver(int index) {
     final SDL_GetVideoDriver = _sdllib
         .lookup<NativeFunction<sdl_getvideodriver_func>>("SDL_GetVideoDriver")
         .asFunction<dart_SDL_GetVideoDriver>();
@@ -130,14 +130,14 @@ class Display {
     return Utf8.fromUtf8(name);
   }
 
-  void SDL_DisableScreenSaver() {
+  void DisableScreenSaver() {
     final SDL_DisableScreenSaver = _sdllib
         .lookup<NativeFunction<sdl_disablescreensaver_func>>('SDL_DisableScreenSaver')
         .asFunction<dart_SDL_DisableScreenSaver>();
     SDL_DisableScreenSaver();
   }
 
-  void SDL_EnableScreenSaver() {
+  void EnableScreenSaver() {
     final SDL_EnableScreenSaver = _sdllib
         .lookup<NativeFunction<sdl_enablescreensaver_func>>('SDL_EnableScreenSaver')
         .asFunction<dart_SDL_EnableScreenSaver>();

@@ -60,8 +60,8 @@ Functions
 -  SDL_CreateWindowAndRenderer
 -  SDL_CreateWindowFrom
 +  SDL_DestroyWindow             class Window.DestroyWindow
-+  SDL_DisableScreenSaver        class Video.DisableScreenSaver
-+  SDL_EnableScreenSaver         class Video.EnableScreenSaver
++  SDL_DisableScreenSaver        class Display.DisableScreenSaver
++  SDL_EnableScreenSaver         class Display.EnableScreenSaver
 -  SDL_GL_CreateContext
 -  SDL_GL_DeleteContext
 -  SDL_GL_ExtensionSupported
@@ -79,19 +79,19 @@ Functions
 -  SDL_GL_SwapWindow
 -  SDL_GL_UnloadLibrary
 -  SDL_GetClosestDisplayMode
-+  SDL_GetCurrentDisplayMode     class Video.GetCurrentDisplayMode
-+  SDL_GetCurrentVideoDriver     class Video.GetCurrentVideoDriver
-+  SDL_GetDesktopDisplayMode     class Video.GetDestktopDisplayMode
-+  SDL_GetDisplayBounds          class Video.GetDisplayBounds
++  SDL_GetCurrentDisplayMode     class Display.GetCurrentDisplayMode
++  SDL_GetCurrentVideoDriver     class Display.GetCurrentVideoDriver
++  SDL_GetDesktopDisplayMode     class Display.GetDestktopDisplayMode
++  SDL_GetDisplayBounds          class Display.GetDisplayBounds
 -  SDL_GetDisplayDPI
-+  SDL_GetDisplayMode            class Video.GetDisplayMode
-+  SDL_GetDisplayName            class Video.GetDisplayName
-+  SDL_GetDisplayUsableBounds    class Video.GetDislayUsableBounds
++  SDL_GetDisplayMode            class Display.GetDisplayMode
++  SDL_GetDisplayName            class Display.GetDisplayName
++  SDL_GetDisplayUsableBounds    class Display.GetDislayUsableBounds
 -  SDL_GetGrabbedWindow
-+  SDL_GetNumDisplayModes        class Video.GetNumDisplayModes
-+  SDL_GetNumVideoDisplays       class Video.getNumVideoDisplays
-+  SDL_GetNumVideoDrivers        class Video.getNumVideoDrivers
-+  SDL_GetVideoDriver            class Video.getVideoDriver
++  SDL_GetNumDisplayModes        class Display.GetNumDisplayModes
++  SDL_GetNumVideoDisplays       class Display.GetNumVideoDisplays
++  SDL_GetNumVideoDrivers        class Display.GetNumVideoDrivers
++  SDL_GetVideoDriver            class Display.GetVideoDriver
 -  SDL_GetWindowBordersSize
 +  SDL_GetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_GetWindowData
@@ -102,12 +102,12 @@ Functions
 -  SDL_GetWindowGammaRamp
 -  SDL_GetWindowGrab
 +  SDL_GetWindowID              class Window.GetWindowId
--  SDL_GetWindowMaximumSize
--  SDL_GetWindowMinimumSize
-+  SDL_GetWindowOpacity          class Window.GetWindowOpacity
--  SDL_GetWindowPixelFormat
--  SDL_GetWindowPosition
--  SDL_GetWindowSize
++  SDL_GetWindowMaximumSize     class Window.GetWindoMaximunSize
++  SDL_GetWindowMinimumSize     class Window.GetWindoMminimunSize
++  SDL_GetWindowOpacity         class Window.GetWindowOpacity
++  SDL_GetWindowPixelFormat     class Window.GetWindowPixelFormat
++  SDL_GetWindowPosition        class Window.GetWindowPosition
++  SDL_GetWindowSize            class Window.GetWindowSize
 -  SDL_GetWindowSurface
 -  SDL_GetWindowTitle
 -  SDL_GetWindowWMInfo

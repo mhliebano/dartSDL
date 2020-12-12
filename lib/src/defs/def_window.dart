@@ -43,6 +43,29 @@ typedef dart_SDL_GetWindowId = int Function(Pointer<Uint64> window);
 typedef sdl_getwindowflags_func = Int32 Function(Pointer<Uint64> window);
 typedef dart_SDL_GetWindowFlags = int Function(Pointer<Uint64> window);
 
+//void SDL_GetWindowSize(SDL_Window* window, int* w,int* h)
+typedef sdl_getwindowsize_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
+typedef dart_SDL_GetWindowSize = void Function(Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
+//void SDL_GetWindowMaximumSize(SDL_Window* window,int* w,int* h)
+typedef sdl_getwindowmaxsize_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
+typedef dart_SDL_GetWindowMaxSize = void Function(
+    Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
+//void SDL_GetWindowMinimumSize(SDL_Window* window,int* w,int* h)
+typedef sdl_getwindowminsize_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
+typedef dart_SDL_GetWindowMinSize = void Function(
+    Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
+//Uint32 SDL_GetWindowPixelFormat(SDL_Window* window)
+typedef sdl_getwindowpixelformat_func = Int32 Function(Pointer<Uint64> window);
+typedef dart_SDL_GetWindowPixelFormat = int Function(Pointer<Uint64> window);
+
+//void SDL_GetWindowPosition(SDL_Window* window, int*        x, int*        y)
+typedef sdl_getwindowposition_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
+typedef dart_SDL_GetWindowPosition = void Function(
+    Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
 //int SDL_SetWindowBrightness(SDL_Window* window,float brightness)
 typedef sld_setwindowbrightness_func = Int32 Function(Pointer<Uint64> window, Float brightness);
 typedef dart_SDL_SetWindowBrightness = int Function(Pointer<Uint64> window, double brightness);

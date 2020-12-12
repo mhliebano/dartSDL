@@ -53,23 +53,13 @@ class Window {
     _y = v;
   }
 
-  int _w = 0;
-  get width => _w;
-  set width(int v) {
-    _w = v;
-  }
-
-  int _h = 0;
-  get height => _h;
-  set height(int v) {
-    _h = v;
-  }
-
   void setPosition(int x, int y) {
     _x = x;
     _y = y;
   }
 
+  int _w = 0;
+  int _h = 0;
   void setDimension(int width, int heigth) {
     _w = width;
     _h = heigth;
@@ -79,9 +69,13 @@ class Window {
     _sdllib = dartSDL.sdllib;
   }
 
-  SDL_CreateWindow(String title) {
-    if (!dartSDL.isInit()) {
-      throw ("Debe inicializar el SDL, primero");
+  factory Window.fromPointer(Pointer<Uint64> w) {
+    return Window();
+  }
+
+  CreateWindow(String title) {
+    if (dartSDL.SDL_WasInit(flag: DartSDL.SDL_INIT_VIDEO) != 0) {
+      throw ("Debe inicializar el SDL Video, primero");
     }
     final SDL_CreateWindow =
         _sdllib.lookup<NativeFunction<sdl_createwindow_func>>('SDL_CreateWindow').asFunction<dart_SDL_CreateWindow>();
@@ -91,14 +85,14 @@ class Window {
     }
   }
 
-  void SDL_DestroyWindow() {
+  void DestroyWindow() {
     final SDL_DestroyWindow = _sdllib
         .lookup<NativeFunction<sdl_destroywindow_func>>('SDL_DestroyWindow')
         .asFunction<dart_SDL_DestroyWindow>();
     SDL_DestroyWindow(_window_internal);
   }
 
-  Surface SDL_GetWindowSurface() {
+  Surface GetWindowSurface() {
     final SDL_GetWindowSurface = _sdllib
         .lookup<NativeFunction<sld_getwindowsurface_func>>('SDL_GetWindowSurface')
         .asFunction<dart_SDL_GetWindowSurface>();
@@ -110,7 +104,7 @@ class Window {
   ///
   /// Returns the [double]brightness for the display where 0.0 is completely dark and 1.0 is normal brightness.
   ///
-  double SDL_GetWindowBrightness() {
+  double GetWindowBrightness() {
     final SDL_GetWindowBrightness = _sdllib
         .lookup<NativeFunction<sld_getwindowbrightness_func>>("SDL_GetWindowBrightness")
         .asFunction<dart_SDL_GetWindowBrightness>();
@@ -122,7 +116,7 @@ class Window {
   ///
   ///Returns the [int]index of the display containing the center of the window on success or a negative error code on failure; call SDL_GetError() for more information.
   ///
-  int SDL_GetWindowDisplayIndex() {
+  int GetWindowDisplayIndex() {
     final SDL_GetWindowDisplayIndex = _sdllib
         .lookup<NativeFunction<sld_getwindowdisplayindex_func>>("SDL_GetWindowDisplayIndex")
         .asFunction<dart_SDL_GetWindowDisplayIndex>();
@@ -137,7 +131,7 @@ class Window {
   ///
   ///Returns DisplayMode on success or a negative error code on failure; call SDL_GetError() for more information.
   ///
-  DisplayMode SDL_GetWindowDisplayMode() {
+  DisplayMode GetWindowDisplayMode() {
     final SDL_GetWindowDisplayMode = _sdllib
         .lookup<NativeFunction<sld_getwindowdisplaymode_func>>("SDL_GetWindowDisplayMode")
         .asFunction<dart_SDL_GetWindowDisplayMode>();
@@ -156,7 +150,7 @@ class Window {
   ///
   ///Returns a negative error code on failure; call SDL_GetError() for more information.
   ///
-  double SDL_GetWindowOpacity() {
+  double GetWindowOpacity() {
     final SDL_GetWindowOpacity = _sdllib
         .lookup<NativeFunction<sld_getwindowopacity_func>>("SDL_GetWindowOpacity")
         .asFunction<dart_SDL_GetWindowOpacity>();
@@ -172,13 +166,13 @@ class Window {
   ///
   ///Returns the value associated with name.
   ///
-  String SDL_GetWindowData() {
+  String GetWindowData() {
     final SDL_GetWindowData = _sdllib
         .lookup<NativeFunction<sld_getwindowdata_func>>("SDL_GetWindowData")
         .asFunction<dart_SDL_GetWindowData>();
-    Pointer<Utf8> namepointer = allocate<Utf8>();
+    Pointer namepointer = allocate();
     SDL_GetWindowData(_window_internal, namepointer);
-    print(Utf8.strlen(namepointer));
+    print(namepointer.cast());
     return "ok"; //Utf8.fromUtf8(namepointer);
   }
 
@@ -186,7 +180,7 @@ class Window {
   ///
   ///Returns a mask of the SDL_WindowFlags associated with window
   ///
-  int SDL_GetWindowFlags() {
+  int GetWindowFlags() {
     final SDL_GetWindowFlags = _sdllib
         .lookup<NativeFunction<sdl_getwindowflags_func>>("SDL_GetWindowFlags")
         .asFunction<dart_SDL_GetWindowFlags>();
@@ -198,7 +192,7 @@ class Window {
   ///
   ///Returns the ID of the window on success or 0 on failure; call SDL_GetError() for more information.
   ///
-  int SDL_GetWindowId() {
+  int GetWindowId() {
     final SDL_GetWindowId =
         _sdllib.lookup<NativeFunction<sdl_getwindowid_func>>("SDL_GetWindowID").asFunction<dart_SDL_GetWindowId>();
     int id = SDL_GetWindowId(_window_internal);
@@ -206,6 +200,80 @@ class Window {
       print(dartSDL.SDL_GetError());
     }
     return id;
+  }
+
+  ///Use this function to get the size of a window's client area.
+  ///
+  ///The window size in screen coordinates may differ from the size in pixels,
+  ///if the window was created with SDL_WINDOW_ALLOW_HIGHDPI on a platform with
+  ///high-dpi support (e.g. iOS or OS X). Use SDL_GL_GetDrawableSize(),
+  ///SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the
+  ///real client area size in pixels.
+  ///
+
+  Map<String, int> GetWindowSize() {
+    final SDL_GetWindowSize = _sdllib
+        .lookup<NativeFunction<sdl_getwindowsize_func>>("SDL_GetWindowSize")
+        .asFunction<dart_SDL_GetWindowSize>();
+    Pointer<Uint32> w = allocate();
+    Pointer<Uint32> h = allocate();
+    SDL_GetWindowSize(_window_internal, w, h);
+    return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
+  }
+
+  ///Use this function to get the maximum size of a window's client area.
+  ///
+  ///may be 0
+
+  Map<String, int> GetWindowMaximumSize() {
+    final SDL_GetWindowMaxSize = _sdllib
+        .lookup<NativeFunction<sdl_getwindowmaxsize_func>>("SDL_GetWindowMaximumSize")
+        .asFunction<dart_SDL_GetWindowMaxSize>();
+    Pointer<Uint32> w = allocate();
+    Pointer<Uint32> h = allocate();
+    SDL_GetWindowMaxSize(_window_internal, w, h);
+    return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
+  }
+
+  ///Use this function to get the minimun size of a window's client area.
+  ///
+  ///may be 0
+
+  Map<String, int> GetWindowMinimumSize() {
+    final SDL_GetWindowMinSize = _sdllib
+        .lookup<NativeFunction<sdl_getwindowminsize_func>>("SDL_GetWindowMinimumSize")
+        .asFunction<dart_SDL_GetWindowMinSize>();
+    Pointer<Uint32> w = allocate();
+    Pointer<Uint32> h = allocate();
+    SDL_GetWindowMinSize(_window_internal, w, h);
+    return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
+  }
+
+  ///Use this function to get the pixel format associated with the window.
+  ///
+  ///Returns the pixel format of the window on success or SDL_PIXELFORMAT_UNKNOWN
+  ///on failure; call SDL_GetError() for more information.
+
+  int GetWindowPixelFormat() {
+    final SDL_GetWindowPixelFormat = _sdllib
+        .lookup<NativeFunction<sdl_getwindowpixelformat_func>>("SDL_GetWindowPixelFormat")
+        .asFunction<dart_SDL_GetWindowPixelFormat>();
+    int pf = SDL_GetWindowPixelFormat(_window_internal);
+    return pf;
+  }
+
+  ///Use this function to get the position of a window.
+  ///
+  ///
+
+  Map<String, int> GetWindowPosition() {
+    final SDL_GetWindowPosition = _sdllib
+        .lookup<NativeFunction<sdl_getwindowposition_func>>("SDL_GetWindowPosition")
+        .asFunction<dart_SDL_GetWindowPosition>();
+    Pointer<Uint32> x = allocate();
+    Pointer<Uint32> y = allocate();
+    SDL_GetWindowPosition(_window_internal, x, y);
+    return {"x": x.cast<Int32>().value, "y": y.cast<Int32>().value};
   }
 
   ///void SDL_SetWindowSize(SDL_Window* window,int w,int h)
@@ -220,7 +288,7 @@ class Window {
   /// Fullscreen windows automatically match the size of the display mode,
   /// and you should use SDL_SetWindowDisplayMode() to change their size.
 
-  void SDL_SetWindowSize(int width, int heigth) {
+  void SetWindowSize(int width, int heigth) {
     final SDL_SetWindowSize = _sdllib
         .lookup<NativeFunction<sdl_setwindow_size_func>>('SDL_SetWindowSize')
         .asFunction<dart_SDL_SetWindowSize>();
@@ -231,7 +299,7 @@ class Window {
   ///
   ///title= the desired window title in UTF-8 format
   ///
-  void SDL_SetWindowTitle(String title) {
+  void SetWindowTitle(String title) {
     final SDL_SetWindowTitle = _sdllib
         .lookup<NativeFunction<sdl_setwindowtitle_func>>('SDL_SetWindowTitle')
         .asFunction<dart_SDL_SetWindowTitle>();
@@ -242,7 +310,7 @@ class Window {
   ///
   ///[double]brightness the brightness (gamma multiplier) value to set where 0.0 is completely dark and 1.0 is normal brightness
   ///
-  void SDL_SetWindowBrightness(double brightness) {
+  void SetWindowBrightness(double brightness) {
     final SDL_SetWindowBrightness = _sdllib
         .lookup<NativeFunction<sld_setwindowbrightness_func>>("SDL_SetWindowBrightness")
         .asFunction<dart_SDL_SetWindowBrightness>();
@@ -256,7 +324,7 @@ class Window {
   ///
   ///Returns a negative error code on failure; call SDL_GetError() for more information.
   ///
-  void SDL_SetWindowOpacity(double opacity) {
+  void SetWindowOpacity(double opacity) {
     final SDL_SetWindowOpacity = _sdllib
         .lookup<NativeFunction<sld_setwindowopacity_func>>("SDL_SetWindowOpacity")
         .asFunction<dart_SDL_SetWindowOpacity>();
@@ -266,7 +334,7 @@ class Window {
     }
   }
 
-  void SDL_SetWindowData(String variable, var data) {
+  void SetWindowData(String variable, var data) {
     final SDL_SetWindowData = _sdllib
         .lookup<NativeFunction<sld_setwindowdata_func>>("SDL_SetWindowData")
         .asFunction<dart_SDL_SetWindowData>();
@@ -277,7 +345,7 @@ class Window {
     //return Utf8.fromUtf8(namepointer);
   }
 
-  void SDL_SetWindowDisplayMode(DisplayMode dm) {
+  void SetWindowDisplayMode(DisplayMode dm) {
     final SDL_SetWindowDisplayMode = _sdllib
         .lookup<NativeFunction<sdl_setwindowdisplaymode_func>>("SDL_SetWindowDisplayMode")
         .asFunction<dart_SDL_SetWindowDisplayMode>();

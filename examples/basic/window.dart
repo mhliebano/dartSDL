@@ -9,26 +9,28 @@ void main() async {
   window.setWindowFlag = Window.SDL_WINDOW_FLAG;
 
   dartSDL.SDL_Init(); //Se inicializa el SDL
-  window.SDL_CreateWindow("Ventana SDL"); //Creo la Ventana
-  print(window.SDL_GetWindowId());
+  window.CreateWindow("Ventana SDL"); //Creo la Ventana
+  print(window.GetWindowId());
   sleep(Duration(seconds: 5));
 
-  print(window.SDL_GetWindowFlags());
+  print(window.GetWindowFlags());
+  print(window.GetWindowPosition());
+
   // window.SDL_SetWindowData("testdatapointer", 1234);
   // print(window.SDL_GetWindowData());
 
   //print(window.SDL_GetWindowDisplayIndex());
   //DisplayMode dm = window.SDL_GetWindowDisplayMode();
   //print(dm.width);
-  DisplayMode initDM = window.SDL_GetWindowDisplayMode();
+  DisplayMode initDM = window.GetWindowDisplayMode();
   print("initDM ${initDM.format},${initDM.width}");
   sleep(Duration(seconds: 5));
   Display vdo = Display();
-  DisplayMode displayMode = vdo.SDL_GetDisplayMode(0, 40);
-  window.SDL_SetWindowDisplayMode(displayMode);
-  initDM = window.SDL_GetWindowDisplayMode();
+  DisplayMode displayMode = vdo.GetDisplayMode(0, 40);
+  window.SetWindowDisplayMode(displayMode);
+  initDM = window.GetWindowDisplayMode();
   print("newDM ${initDM.format} ${initDM.width}");
   sleep(Duration(seconds: 5));
-  window.SDL_DestroyWindow(); //Elimino la ventana
+  window.DestroyWindow(); //Elimino la ventana
   dartSDL.SDL_Quit(); //Salgo del Programa
 }
