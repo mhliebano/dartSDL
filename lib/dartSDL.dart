@@ -1,5 +1,7 @@
+export 'src/enums/gl_attr.dart';
 export 'src/classes/sdl.dart';
 export 'src/classes/window.dart';
+export 'src/classes/gl_context.dart';
 export 'src/classes/display.dart';
 export 'src/classes/render.dart';
 export 'src/classes/surface.dart';
