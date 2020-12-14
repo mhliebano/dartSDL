@@ -4,22 +4,16 @@ import 'package:dartSDL/dartSDL.dart';
 void main() async {
   //Objetos
 
-  Window window = Window();
-  window.setDimension(800, 600); //Seteo parametros de la ventana
-  window.setWindowFlag = WindowFlags.SDL_WINDOW_OPENGL;
+  Window window;
+  Renderer renderer;
 
   dartSDL.SDL_Init(); //Se inicializa el SDL
-  window.CreateWindow("Ventana SDL 1"); //Creo la Ventana
+  window = Window.CreateWindow("Ventana SDL 1", 0, 0, 800, 600, WindowFlags.SDL_WINDOW_OPENGL); //Creo la Ventana
+  renderer = Renderer.CreateRenderer(window);
 
-  GL_Context gl1 = window.GL_CreateContext();
-  print(gl1.idContext);
+  sleep(Duration(seconds: 5));
 
-  print(window.GL_GetDrawableSize());
-
-  sleep(Duration(seconds: 3));
-
-  window.GL_DeleteContext(gl1);
-
+  renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana
 
   dartSDL.SDL_Quit(); //Salgo del Programa

@@ -12,35 +12,7 @@ import "./gl_context.dart";
 class Window {
   DynamicLibrary _sdllib;
   Pointer<Uint64> _window_internal = null;
-
-  int _sdl_window_flag = WindowFlags.SDL_WINDOW_FLAG;
-  set setWindowFlag(int f) {
-    _sdl_window_flag = f;
-  }
-
-  int _x = 0;
-  get x => _x;
-  set x(int v) {
-    _x = v;
-  }
-
-  int _y = 0;
-  get y => _y;
-  set y(int v) {
-    _y = v;
-  }
-
-  void setPosition(int x, int y) {
-    _x = x;
-    _y = y;
-  }
-
-  int _w = 0;
-  int _h = 0;
-  void setDimension(int width, int heigth) {
-    _w = width;
-    _h = heigth;
-  }
+  get windowPointer => _window_internal;
 
   Window() {
     _sdllib = dartSDL.sdllib;
@@ -52,15 +24,13 @@ class Window {
     return wd;
   }
 
-  CreateWindow(String title) {
-    if (dartSDL.SDL_WasInit(flag: DartSDL.SDL_INIT_VIDEO) != 0) {
-      throw ("Debe inicializar el SDL Video, primero");
-    }
+  Window.CreateWindow(String title, int x, int y, int width, int height, int flag) {
+    _sdllib = dartSDL.sdllib;
     final SDL_CreateWindow =
         _sdllib.lookup<NativeFunction<sdl_createwindow_func>>('SDL_CreateWindow').asFunction<dart_SDL_CreateWindow>();
-    _window_internal = SDL_CreateWindow(Utf8.toUtf8(title), _x, _y, _w, _h, _sdl_window_flag);
+    _window_internal = SDL_CreateWindow(Utf8.toUtf8(title), x, y, width, height, flag);
     if (_window_internal == null) {
-      throw ("No se pudo crear la ventana");
+      throw (dartSDL.SDL_GetError());
     }
   }
 
