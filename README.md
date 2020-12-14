@@ -34,15 +34,15 @@ Functions
 Enumerations
 ```diff
 -SDL_BlendMode
-+SDL_GLattr                 enum GL_Attr
--SDL_GLcontextFlag
--SDL_GLprofile
--SDL_HitTestResult
++SDL_GLattr                      enum GL_Attr
++SDL_GLcontextFlag               abstract class GLcontextFlag
++SDL_GLprofile                   abstract class GLProfile
++SDL_HitTestResult               enum Hit_Test_Result
 -SDL_MessageBoxButtonFlags
 -SDL_MessageBoxColorType
 -SDL_MessageBoxFlags
 -SDL_WindowEventID
-+SDL_WindowFlags              class Window.[ENUM]
++SDL_WindowFlags                 abstract class WindowFlags
 ```
 Structures
 ```diff
