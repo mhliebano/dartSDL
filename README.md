@@ -34,7 +34,7 @@ Functions
 Enumerations
 ```diff
 -SDL_BlendMode
--SDL_GLattr
++SDL_GLattr                 enum GL_Attr
 -SDL_GLcontextFlag
 -SDL_GLprofile
 -SDL_HitTestResult
