@@ -62,13 +62,13 @@ Functions
 +  SDL_DestroyWindow             class Window.DestroyWindow
 +  SDL_DisableScreenSaver        class Display.DisableScreenSaver
 +  SDL_EnableScreenSaver         class Display.EnableScreenSaver
--  SDL_GL_CreateContext
--  SDL_GL_DeleteContext
++  SDL_GL_CreateContext          class Window.CreateContext
++  SDL_GL_DeleteContext          class Display.DeleteContext
 -  SDL_GL_ExtensionSupported
--  SDL_GL_GetAttribute
--  SDL_GL_GetCurrentContext
--  SDL_GL_GetCurrentWindow
--  SDL_GL_GetDrawableSize
++  SDL_GL_GetAttribute           class Window.GetAttribute
++  SDL_GL_GetCurrentContext      class Window.GetCurrentContext
++  SDL_GL_GetCurrentWindow.......class Window.GetCurrentWindow
++  SDL_GL_GetDrawableSize....... class Window.GetDrawableSize
 -  SDL_GL_GetProcAddress
 -  SDL_GL_GetSwapInterval
 -  SDL_GL_LoadLibrary
@@ -109,14 +109,14 @@ Functions
 +  SDL_GetWindowPosition        class Window.GetWindowPosition
 +  SDL_GetWindowSize            class Window.GetWindowSize
 -  SDL_GetWindowSurface
--  SDL_GetWindowTitle
++  SDL_GetWindowTitle           class Window.GetWindowTitle
 -  SDL_GetWindowWMInfo
--  SDL_HideWindow
--  SDL_IsScreenSaverEnabled
--  SDL_MaximizeWindow
--  SDL_MinimizeWindow
--  SDL_RaiseWindow
--  SDL_RestoreWindow
++  SDL_HideWindow               class Window.HideWindow
++  SDL_IsScreenSaverEnabled     class Window.IsScreenSaverEnabled
++  SDL_MaximizeWindow           class Window.MaximizeWindow
++  SDL_MinimizeWindow           class Window.MinimizeWindow
++  SDL_RaiseWindow              class Window.RaiseWindow
++  SDL_RestoreWindow            class Window.RestoreWindow
 -  SDL_SetWindowBordered
 +  SDL_SetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_SetWindowData
@@ -137,7 +137,7 @@ Functions
 +  SDL_SetWindowTitle            class Window.SetWindowTitle
 -  SDL_ShowMessageBox
 -  SDL_ShowSimpleMessageBox
--  SDL_ShowWindow
++  SDL_ShowWindow                class Window.ShowWindow
 -  SDL_UpdateWindowSurface
 -  SDL_UpdateWindowSurfaceRects
 -  SDL_VideoInit
