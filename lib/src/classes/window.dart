@@ -6,11 +6,12 @@ import '../../dartSDL.dart';
 import '../class_struct/displaysmode_struct.dart';
 import '../class_struct/surface_struct.dart';
 import '../defs/def_window.dart';
+import '../enums/gl_attr.dart';
+import "./gl_context.dart";
 
 class Window {
   DynamicLibrary _sdllib;
   Pointer<Uint64> _window_internal = null;
-  get window => _window_internal;
 
   static final SDL_WINDOW_FULLSCREEN = 0x00000001; /**< fullscreen window */
   static final SDL_WINDOW_OPENGL = 0x00000002; /**< window usable with OpenGL context */
@@ -70,7 +71,9 @@ class Window {
   }
 
   factory Window.fromPointer(Pointer<Uint64> w) {
-    return Window();
+    Window wd = Window();
+    wd._window_internal = w;
+    return wd;
   }
 
   CreateWindow(String title) {
@@ -83,6 +86,100 @@ class Window {
     if (_window_internal == null) {
       throw ("No se pudo crear la ventana");
     }
+  }
+
+  ///Use this function to create an OpenGL context for use with an OpenGL window, and make it current.
+  ///
+  ///Returns the OpenGL context associated with window or NULL on error
+
+  GL_Context GL_CreateContext() {
+    final SDL_GL_CreateContext = _sdllib
+        .lookup<NativeFunction<sdl_glcreatecontext_func>>("SDL_GL_CreateContext")
+        .asFunction<dart_SDL_GL_CreateContext>();
+    Pointer _glContext = SDL_GL_CreateContext(_window_internal);
+    if (_glContext == null) {
+      throw (dartSDL.SDL_GetError());
+    }
+    GL_Context glc = GL_Context.fromPointer(_glContext);
+    return glc;
+  }
+
+  ///Use this function to delete an OpenGL context.
+  ///
+  ///
+
+  void GL_DeleteContext(GL_Context glContext) {
+    final SDL_GL_DeleteContext = _sdllib
+        .lookup<NativeFunction<sdl_gldeletecontext_func>>("SDL_GL_DeleteContext")
+        .asFunction<dart_SDL_GL_DeleteContext>();
+    SDL_GL_DeleteContext(glContext.context);
+  }
+
+  ///Use this function to get the actual value for an attribute from the current context.
+  ///
+
+  int GL_GetAttibute(GL_Attr n) {
+    final SDL_GL_GetAttr = _sdllib
+        .lookup<NativeFunction<sdl_glgetattribute_func>>("SDL_GL_GetAttribute")
+        .asFunction<dart_SDL_GL_GetAttribute>();
+    Pointer<Int32> value = allocate();
+    int v = SDL_GL_GetAttr(GL_Attr.SDL_GL_RED_SIZE.index, value);
+    if (v != 0) {
+      throw dartSDL.SDL_GetError();
+    }
+    return value.cast<Int32>().value;
+  }
+
+  ///Use this function to get the currently active OpenGL context.
+  ///
+  ///Returns the currently active OpenGL context or NULL on failure
+  ///
+
+  GL_Context GL_GetCurrentContext() {
+    final SDL_GL_GetCurrentContext = _sdllib
+        .lookup<NativeFunction<sdl_glgetcurrentcontext_func>>("SDL_GL_GetCurrentContext")
+        .asFunction<dart_SDL_GL_GetCurrentContext>();
+    Pointer _glContext = SDL_GL_GetCurrentContext();
+    if (_glContext == null) {
+      throw (dartSDL.SDL_GetError());
+    }
+    GL_Context glc = GL_Context.fromPointer(_glContext);
+    return glc;
+  }
+
+  ///Use this function to get the currently active OpenGL context.
+  ///
+  ///Returns the currently active OpenGL context or NULL on failure
+  ///
+
+  Window GL_GetCurrentWindow() {
+    final SDL_GL_GetCurrentWindow = _sdllib
+        .lookup<NativeFunction<sdl_glgetcurrentwindow_func>>("SDL_GL_GetCurrentWindow")
+        .asFunction<dart_SDL_GL_GetCurrentWindow>();
+    Pointer<Uint64> _win = SDL_GL_GetCurrentWindow();
+    if (_win == null) {
+      throw (dartSDL.SDL_GetError());
+    }
+    Window window = Window.fromPointer(_win);
+    return window;
+  }
+
+  ///Use this function to get the size of a window's underlying drawable in pixels (for use with glViewport).
+  ///
+  ///This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI drawable,
+  ///i.e. the window was created with SDL_WINDOW_ALLOW_HIGHDPI on a platform with
+  ///high-DPI support (Apple calls this "Retina"), and not disabled by the
+  ///SDL_HINT_VIDEO_HIGHDPI_DISABLED hint.
+  ///
+
+  Map<String, int> GL_GetDrawableSize() {
+    final SDL_GetDrawableSize = _sdllib
+        .lookup<NativeFunction<sdl_getdrawablesize_func>>("SDL_GL_GetDrawableSize")
+        .asFunction<dart_SDL_GetDrawableSize>();
+    Pointer<Uint32> w = allocate();
+    Pointer<Uint32> h = allocate();
+    SDL_GetDrawableSize(_window_internal, w, h);
+    return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
   }
 
   void DestroyWindow() {
@@ -170,9 +267,9 @@ class Window {
     final SDL_GetWindowData = _sdllib
         .lookup<NativeFunction<sld_getwindowdata_func>>("SDL_GetWindowData")
         .asFunction<dart_SDL_GetWindowData>();
-    Pointer namepointer = allocate();
-    SDL_GetWindowData(_window_internal, namepointer);
-    print(namepointer.cast());
+    Pointer<Utf8> namepointer = Utf8.toUtf8("testdatapointer");
+    Pointer data = SDL_GetWindowData(_window_internal, namepointer);
+    print(data.cast<Int32>().value);
     return "ok"; //Utf8.fromUtf8(namepointer);
   }
 
@@ -276,6 +373,88 @@ class Window {
     return {"x": x.cast<Int32>().value, "y": y.cast<Int32>().value};
   }
 
+  ///Use this function to get the title of a window.
+  ///
+  ///Returns the title of the window in UTF-8 format or "" if there is no title.
+  ///
+
+  String GetWindowTitle() {
+    final SDL_GetWindowTitle = _sdllib
+        .lookup<NativeFunction<sdl_getwindowtitle_func>>("SDL_GetWindowTitle")
+        .asFunction<dart_SDL_GetWindowTitle>();
+    Pointer<Utf8> title = SDL_GetWindowTitle(_window_internal);
+    return Utf8.fromUtf8(title);
+  }
+
+  ///Use this function to hide a window.
+  ///
+  ///
+
+  void HideWindow() {
+    final SDL_HideWindow =
+        _sdllib.lookup<NativeFunction<sdl_hidewindow_func>>("SDL_HideWindow").asFunction<dart_SDL_HideWindow>();
+    SDL_HideWindow(_window_internal);
+  }
+
+  ///Use this function to check whether the screensaver is currently enabled.
+  ///
+  ///Returns SDL_TRUE if the screensaver is enabled, SDL_FALSE if it is disabled.
+
+  bool IsScreenSaverEnabled() {
+    final SDL_IsScreenSaverEnabled = _sdllib
+        .lookup<NativeFunction<sdl_isscreensaverenabled_func>>("SDL_IsScreenSaverEnabled")
+        .asFunction<dart_SDL_IsScreenSaverEnabled>();
+    int value = SDL_IsScreenSaverEnabled(_window_internal);
+    if (value == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///Use this function to make a window as large as possible.
+  ///
+  ///use flags SDL_WINDOW_RESIZABLE or similar
+
+  void MaximizeWindow() {
+    final SDL_MaximizeWindow = _sdllib
+        .lookup<NativeFunction<sdl_maximizewindow_func>>("SDL_MaximizeWindow")
+        .asFunction<dart_SDL_MaximizeWindow>();
+    SDL_MaximizeWindow(_window_internal);
+  }
+
+  ///Use this function to minimize a window to an iconic representation.
+  ///
+  ///
+
+  void MinimizeWindow() {
+    final SDL_MinimizeWindow = _sdllib
+        .lookup<NativeFunction<sdl_minimizewindow_func>>("SDL_MinimizeWindow")
+        .asFunction<dart_SDL_MinimizeWindow>();
+    SDL_MinimizeWindow(_window_internal);
+  }
+
+  ///Use this function to raise a window above other windows and set the input focus.
+  ///
+  ///
+
+  void RaiseWindow() {
+    final SDL_RaiseWindow =
+        _sdllib.lookup<NativeFunction<sdl_raisewindow_func>>("SDL_RaiseWindow").asFunction<dart_SDL_RaiseWindow>();
+    SDL_RaiseWindow(_window_internal);
+  }
+
+  ///Use this function to restore the size and position of a minimized or maximized window.
+  ///
+  ///
+
+  void RestoreWindow() {
+    final SDL_RestoreWindow = _sdllib
+        .lookup<NativeFunction<sdl_restorewindow_func>>("SDL_RestoreWindow")
+        .asFunction<dart_SDL_RestoreWindow>();
+    SDL_RestoreWindow(_window_internal);
+  }
+
   ///void SDL_SetWindowSize(SDL_Window* window,int w,int h)
   ///
   ///width  = the width of the window in pixels, in screen coordinates, must be > 0
@@ -353,5 +532,15 @@ class Window {
     DisplayModeStruct dps = DisplayModeStruct.allocate(dm.format, dm.width, dm.heigth, dm.refresh_rate, 0);
     SDL_SetWindowDisplayMode(_window_internal, dps.addressOf);
     //return Utf8.fromUtf8(namepointer);
+  }
+
+  ///Use this function to hide a window.
+  ///
+  ///
+
+  void ShowWindow() {
+    final SDL_ShowWindow =
+        _sdllib.lookup<NativeFunction<sdl_showwindow_func>>("SDL_ShowWindow").asFunction<dart_SDL_ShowWindow>();
+    SDL_ShowWindow(_window_internal);
   }
 }

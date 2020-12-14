@@ -12,6 +12,30 @@ typedef dart_SDL_CreateWindow = Pointer<Uint64> Function(Pointer<Utf8> title, in
 typedef sdl_destroywindow_func = Void Function(Pointer<Uint64> window);
 typedef dart_SDL_DestroyWindow = void Function(Pointer<Uint64> window);
 
+//SDL_GLContext SDL_GL_CreateContext(SDL_Window* window)
+typedef sdl_glcreatecontext_func = Pointer Function(Pointer<Uint64> window);
+typedef dart_SDL_GL_CreateContext = Pointer Function(Pointer<Uint64> window);
+
+//void SDL_GL_DeleteContext(SDL_GLContext context)
+typedef sdl_gldeletecontext_func = Void Function(Pointer glContext);
+typedef dart_SDL_GL_DeleteContext = void Function(Pointer glContext);
+
+//int SDL_GL_GetAttribute(SDL_GLattr attr,int* value)
+typedef sdl_glgetattribute_func = Int32 Function(Int32 attr, Pointer<Int32> value);
+typedef dart_SDL_GL_GetAttribute = int Function(int attr, Pointer<Int32> value);
+
+//SDL_GLContext SDL_GL_GetCurrentContext(void)
+typedef sdl_glgetcurrentcontext_func = Pointer Function();
+typedef dart_SDL_GL_GetCurrentContext = Pointer Function();
+
+//SDL_Window* SDL_GL_GetCurrentWindow(void)
+typedef sdl_glgetcurrentwindow_func = Pointer<Uint64> Function();
+typedef dart_SDL_GL_GetCurrentWindow = Pointer<Uint64> Function();
+
+//void SDL_GL_GetDrawableSize(SDL_Window* window,int* w, int* h)
+typedef sdl_getdrawablesize_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
+typedef dart_SDL_GetDrawableSize = void Function(Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
 typedef sld_getwindowsurface_func = Pointer<SurfaceStruct> Function(Pointer<Uint64> window);
 typedef dart_SDL_GetWindowSurface = Pointer<SurfaceStruct> Function(Pointer<Uint64> window);
 
@@ -32,8 +56,8 @@ typedef sld_getwindowopacity_func = Int32 Function(Pointer<Uint64> window, Point
 typedef dart_SDL_GetWindowOpacity = int Function(Pointer<Uint64> window, Pointer<Float> opacity);
 
 //void* SDL_GetWindowData(SDL_Window* window, const char* name)
-typedef sld_getwindowdata_func = Void Function(Pointer<Uint64> window, Pointer<Utf8> name);
-typedef dart_SDL_GetWindowData = void Function(Pointer<Uint64> window, Pointer<Utf8> name);
+typedef sld_getwindowdata_func = Pointer Function(Pointer<Uint64> window, Pointer<Utf8> name);
+typedef dart_SDL_GetWindowData = Pointer Function(Pointer<Uint64> window, Pointer<Utf8> name);
 
 //Uint32 SDL_GetWindowID(SDL_Window* window)
 typedef sdl_getwindowid_func = Int32 Function(Pointer<Uint64> window);
@@ -66,6 +90,34 @@ typedef sdl_getwindowposition_func = Void Function(Pointer<Uint64> window, Point
 typedef dart_SDL_GetWindowPosition = void Function(
     Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
 
+//const char* SDL_GetWindowTitle(SDL_Window* window)
+typedef sdl_getwindowtitle_func = Pointer<Utf8> Function(Pointer<Uint64> window);
+typedef dart_SDL_GetWindowTitle = Pointer<Utf8> Function(Pointer<Uint64> window);
+
+//void SDL_HideWindow(SDL_Window* window)
+typedef sdl_hidewindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_HideWindow = void Function(Pointer<Uint64> window);
+
+//SDL_bool SDL_IsScreenSaverEnabled(void)
+typedef sdl_isscreensaverenabled_func = Int32 Function(Pointer<Uint64> window);
+typedef dart_SDL_IsScreenSaverEnabled = int Function(Pointer<Uint64> window);
+
+//void SDL_MaximizeWindow(SDL_Window* window)
+typedef sdl_maximizewindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_MaximizeWindow = void Function(Pointer<Uint64> window);
+
+//void SDL_MinimizeWindow(SDL_Window* window)
+typedef sdl_minimizewindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_MinimizeWindow = void Function(Pointer<Uint64> window);
+
+//void SDL_RaiseWindow(SDL_Window* window)
+typedef sdl_raisewindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_RaiseWindow = void Function(Pointer<Uint64> window);
+
+//void SDL_RestoreWindow(SDL_Window* window)
+typedef sdl_restorewindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_RestoreWindow = void Function(Pointer<Uint64> window);
+
 //int SDL_SetWindowBrightness(SDL_Window* window,float brightness)
 typedef sld_setwindowbrightness_func = Int32 Function(Pointer<Uint64> window, Float brightness);
 typedef dart_SDL_SetWindowBrightness = int Function(Pointer<Uint64> window, double brightness);
@@ -89,3 +141,7 @@ typedef dart_SDL_SetWindowSize = void Function(Pointer<Uint64> window, int w, in
 //void SDL_SetWindowTitle(SDL_Window* window,const char* title)
 typedef sdl_setwindowtitle_func = Void Function(Pointer<Uint64> window, Pointer<Utf8> title);
 typedef dart_SDL_SetWindowTitle = void Function(Pointer<Uint64> window, Pointer<Utf8> title);
+
+//void SDL_ShowWindow(SDL_Window* window)
+typedef sdl_showwindow_func = Void Function(Pointer<Uint64> window);
+typedef dart_SDL_ShowWindow = void Function(Pointer<Uint64> window);
