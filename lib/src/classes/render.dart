@@ -12,8 +12,14 @@ class Renderer {
 
   Pointer<Uint64> _render_internal = null;
 
-  Renderer(DynamicLibrary lib) {
+  Renderer() {
     _sdllib = dartSDL.sdllib;
+  }
+
+  factory Renderer.fromPointer(Pointer<Uint64> r) {
+    Renderer rd = Renderer();
+    rd._render_internal = r;
+    return rd;
   }
 
   ///Use this function to create a 2D rendering context for a window.

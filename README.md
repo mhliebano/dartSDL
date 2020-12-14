@@ -57,7 +57,7 @@ Structures
 Functions
 ```diff
 +  SDL_CreateWindow              class Window.CreateWindow
--  SDL_CreateWindowAndRenderer
++  SDL_CreateWindowAndRenderer   class Window.CreateWindowAndRenderer
 -  SDL_CreateWindowFrom
 +  SDL_DestroyWindow             class Window.DestroyWindow
 +  SDL_DisableScreenSaver        class Display.DisableScreenSaver

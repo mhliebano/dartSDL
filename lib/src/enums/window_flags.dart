@@ -23,3 +23,13 @@ abstract class WindowFlags {
   static final SDL_WINDOW_METAL = 0x20000000; /**< window usable for Metal view */
   static final SDL_WINDOW_FLAG = 0x00000000;
 }
+
+abstract class WINDOWPOS {
+  static final SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000;
+  static final SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
+  // static SDL_WINDOWPOS_CENTERED_DISPLAY(X) => (SDL_WINDOWPOS_CENTERED_MASK | (X));
+  // static SDL_WINDOWPOS_ISCENTERED(X) => (((X) & 0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
+  // SDL_WINDOWPOS_CENTERED() {
+  //   SDL_WINDOWPOS_CENTERED_DISPLAY(0);
+  // }
+}

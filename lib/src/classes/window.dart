@@ -14,6 +14,9 @@ class Window {
   Pointer<Uint64> _window_internal = null;
   get windowPointer => _window_internal;
 
+  Renderer _renderer = null;
+  get renderer => _renderer;
+
   Window() {
     _sdllib = dartSDL.sdllib;
   }
@@ -32,6 +35,29 @@ class Window {
     if (_window_internal == null) {
       throw (dartSDL.SDL_GetError());
     }
+  }
+
+  ///Use this function to create a window and default renderer.
+  ///
+  ///width=the width of the window
+  ///height=the height of the window
+  ///window_flags=the flags used to create the window (see SDL_CreateWindow())
+  ///
+  ///Returns 0 on success, or -1 on error; call SDL_GetError()
+
+  Window.CreateWindowAndRender(int width, int height, int flag) {
+    _sdllib = dartSDL.sdllib;
+    final CreateWindowAndRender = _sdllib
+        .lookup<NativeFunction<sdl_createwindowandrender_func>>("SDL_CreateWindowAndRenderer")
+        .asFunction<dart_SDL_CreateWindowAndRender>();
+    Pointer<Uint64> window = allocate();
+    Pointer<Uint64> renderer = allocate();
+    int v = CreateWindowAndRender(width, height, flag, window, renderer);
+    if (v != 0) {
+      throw (dartSDL.SDL_GetError());
+    }
+    _window_internal = window;
+    _renderer = Renderer.fromPointer(renderer);
   }
 
   ///Use this function to create an OpenGL context for use with an OpenGL window, and make it current.

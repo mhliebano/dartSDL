@@ -8,6 +8,12 @@ typedef sdl_createwindow_func = Pointer<Uint64> Function(
     Pointer<Utf8> title, Int32 x, Int32 y, Int32 w, Int32 h, Uint32 flags);
 typedef dart_SDL_CreateWindow = Pointer<Uint64> Function(Pointer<Utf8> title, int x, int y, int w, int h, int flags);
 
+//int SDL_CreateWindowAndRenderer(int width, int height, Uint32 window_flags,SDL_Window** window, SDL_Renderer** renderer)
+typedef sdl_createwindowandrender_func = Int32 Function(
+    Int32 w, Int32 h, Uint32 flags, Pointer<Uint64> window, Pointer<Uint64> renderer);
+typedef dart_SDL_CreateWindowAndRender = int Function(
+    int w, int h, int flags, Pointer<Uint64> window, Pointer<Uint64> renderer);
+
 //
 typedef sdl_destroywindow_func = Void Function(Pointer<Uint64> window);
 typedef dart_SDL_DestroyWindow = void Function(Pointer<Uint64> window);
