@@ -1,0 +1,12 @@
+abstract class GLcontextFlag {
+  static final SDL_GL_CONTEXT_DEBUG_FLAG = 0x0001;
+  static final SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x0002;
+  static final SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x0004;
+  static final SDL_GL_CONTEXT_RESET_ISOLATION_FLAG = 0x0008;
+}
+
+abstract class GLProfile {
+  static final SDL_GL_CONTEXT_PROFILE_CORE = 0x0001;
+  static final SDL_GL_CONTEXT_PROFILE_COMPATIBILITY = 0x0002;
+  static final SDL_GL_CONTEXT_PROFILE_ES = 0x0004; /**< GLX_CONTEXT_ES2_PROFILE_BIT_EXT */
+}
