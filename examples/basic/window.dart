@@ -9,8 +9,13 @@ void main() async {
 
   dartSDL.SDL_Init(flags: DartSDL.SDL_INIT_VIDEO); //Se inicializa el SDL
 
-  window = Window.CreateWindow("SDL", WINDOWPOS.SDL_WINDOWPOS_CENTERED_MASK, WINDOWPOS.SDL_WINDOWPOS_CENTERED_MASK, 800,
-      600, WindowFlags.SDL_WINDOW_OPENGL);
+  window = Window.CreateWindow(
+      "SDL",
+      WINDOWPOS.SDL_WINDOWPOS_CENTERED_MASK,
+      WINDOWPOS.SDL_WINDOWPOS_CENTERED_MASK,
+      800,
+      600,
+      WindowFlags.SDL_WINDOW_OPENGL);
 
   window.GL_CreateContext();
   print(window.GL_GetCurrentContext());
@@ -21,7 +26,7 @@ void main() async {
   //window = Window.CreateWindow("Ventana SDL 1", 0, 0, 800, 600, WindowFlags.SDL_WINDOW_OPENGL); //Creo la Ventana
   //renderer = Renderer.CreateRenderer(window);
 
-  print(Window.GL_GetSwapInterval());
+  print(window.GL_GetSwapInterval());
   print(window.GL_GetAttibute(GL_Attr.SDL_GL_RED_SIZE));
 
   sleep(Duration(seconds: 5));
