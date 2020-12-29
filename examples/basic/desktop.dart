@@ -43,14 +43,18 @@ void main() async {
   }
 
   DisplayMode current_display = display.GetCurrentDisplayMode(0);
+  Map dpi = display.GetDisplayDPI(0);
   print(current_display.driverdata);
-  print("Mode Current:, ${current_display.format},${current_display.width},${current_display.heigth}");
+  print(
+      "Mode Current:, ${current_display.format},${current_display.width},${current_display.heigth}");
+  print("DPI ${dpi["ddpi"]},${dpi["hdpi"]},${dpi["vdpi"]}");
 
   Rect rect = display.GetDisplayBounds(0);
   print("DisplayBounds:, ${rect.x},${rect.y},${rect.width},${rect.heigth}");
 
   Rect rectusable = display.GetDisplayUsableBounds(0);
-  print("DisplayUsableBounds:, ${rectusable.x},${rectusable.y},${rectusable.width},${rectusable.heigth}");
+  print(
+      "DisplayUsableBounds:, ${rectusable.x},${rectusable.y},${rectusable.width},${rectusable.heigth}");
 
   dartSDL.SDL_Quit();
 }

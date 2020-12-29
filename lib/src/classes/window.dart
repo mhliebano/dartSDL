@@ -241,6 +241,15 @@ class Window {
     }
   }
 
+  ///Use this function to update a window with OpenGL rendering.
+
+  void GL_SwapWindow() {
+    final SDL_GL_SwapWindow = _sdllib
+        .lookup<NativeFunction<sdl_glswapwindow_func>>("SDL_GL_SwapWindow")
+        .asFunction<dart_SDL_GL_SwapWindow>();
+    SDL_GL_SwapWindow(_window_internal);
+  }
+
   void DestroyWindow() {
     final SDL_DestroyWindow = _sdllib
         .lookup<NativeFunction<sdl_destroywindow_func>>('SDL_DestroyWindow')

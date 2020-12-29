@@ -1,14 +1,17 @@
 # dartSDL
+
 binding a SDL libray using dart
 
 ## SDL APi by Category
-http://wiki.libsdl.org/APIByCategory
+
+<http://wiki.libsdl.org/APIByCategory>
 
 ### Category Implements
 
 #### Initialization and Shutdown
 
 Functions
+
 ```diff
 + SDL_Init                       class DartSDL.Init 
 + SDL_InitSubSystem              class DartSDL.InitSubSystem
@@ -22,16 +25,17 @@ Functions
 #### Error Handling
 
 Functions
+
 ```diff
 - SDL_ClearError   
 + SDL_GetError                   class DartSDL.GetError
 - SDL_SetError
 ```
 
-
 #### Display and Window Management
 
 Enumerations
+
 ```diff
 -SDL_BlendMode
 +SDL_GLattr                      enum GL_Attr
@@ -44,7 +48,9 @@ Enumerations
 -SDL_WindowEventID
 +SDL_WindowFlags                 abstract class WindowFlags
 ```
+
 Structures
+
 ```diff
 +SDL_DisplayMode              class DisplayMode
 -SDL_MessageBoxButtonData
@@ -55,6 +61,7 @@ Structures
 ```
 
 Functions
+
 ```diff
 +  SDL_CreateWindow              class Window.CreateWindow
 +  SDL_CreateWindowAndRenderer   class Window.CreateWindowAndRenderer
@@ -67,23 +74,23 @@ Functions
 -  SDL_GL_ExtensionSupported
 +  SDL_GL_GetAttribute           class Window.GL_etAttribute
 +  SDL_GL_GetCurrentContext      class Window.GL_GetCurrentContext
-+  SDL_GL_GetCurrentWindow.......class Window.GL_GetCurrentWindow
-+  SDL_GL_GetDrawableSize....... class Window.GL_GetDrawableSize
++  SDL_GL_GetCurrentWindow       class Window.GL_GetCurrentWindow
++  SDL_GL_GetDrawableSize        class Window.GL_GetDrawableSize
 -  SDL_GL_GetProcAddress
-+  SDL_GL_GetSwapInterval........class Window.GL_GetSwapInterval
++  SDL_GL_GetSwapInterval        class Window.GL_GetSwapInterval
 -  SDL_GL_LoadLibrary
-+  SDL_GL_MakeCurrent............class Window.GL_MakeCurrent
-+  SDL_GL_ResetAttributes........class Window.GL_ResetAttributes
++  SDL_GL_MakeCurrent            class Window.GL_MakeCurrent
++  SDL_GL_ResetAttributes        class Window.GL_ResetAttributes
 +  SDL_GL_SetAttribute           class Window.GL_SetAttribute
-+  SDL_GL_SetSwapInterval........class Window.GL_SetSwapInterval
--  SDL_GL_SwapWindow
++  SDL_GL_SetSwapInterval        class Window.GL_SetSwapInterval
++  SDL_GL_SwapWindow             class Window.GL_SwapWindow
 -  SDL_GL_UnloadLibrary
 -  SDL_GetClosestDisplayMode
 +  SDL_GetCurrentDisplayMode     class Display.GetCurrentDisplayMode
 +  SDL_GetCurrentVideoDriver     class Display.GetCurrentVideoDriver
 +  SDL_GetDesktopDisplayMode     class Display.GetDestktopDisplayMode
 +  SDL_GetDisplayBounds          class Display.GetDisplayBounds
--  SDL_GetDisplayDPI
++  SDL_GetDisplayDPI             class Display.GetDisplayDPI
 +  SDL_GetDisplayMode            class Display.GetDisplayMode
 +  SDL_GetDisplayName            class Display.GetDisplayName
 +  SDL_GetDisplayUsableBounds    class Display.GetDislayUsableBounds
@@ -147,6 +154,7 @@ Functions
 #### 2D Accelerated Rendering
 
 Enumerations
+
 ```diff
 - SDL_BlendFactor
 - SDL_BlendOperation
@@ -157,13 +165,15 @@ Enumerations
 ```
 
 Structures
+
 ```diff
 - SDL_Renderer
 - SDL_RendererInfo
 - SDL_Texture
-``` 
+```
 
 Functions
+
 ```diff
 - SDL_ComposeCustomBlendMode
 + SDL_CreateRenderer             class Renderer.CreateRenderer
