@@ -62,20 +62,20 @@ Functions
 +  SDL_DestroyWindow             class Window.DestroyWindow
 +  SDL_DisableScreenSaver        class Display.DisableScreenSaver
 +  SDL_EnableScreenSaver         class Display.EnableScreenSaver
-+  SDL_GL_CreateContext          class Window.CreateContext
-+  SDL_GL_DeleteContext          class Display.DeleteContext
++  SDL_GL_CreateContext          class Window.GL_CreateContext
++  SDL_GL_DeleteContext          class Display.GL_DeleteContext
 -  SDL_GL_ExtensionSupported
-+  SDL_GL_GetAttribute           class Window.GetAttribute
-+  SDL_GL_GetCurrentContext      class Window.GetCurrentContext
-+  SDL_GL_GetCurrentWindow.......class Window.GetCurrentWindow
-+  SDL_GL_GetDrawableSize....... class Window.GetDrawableSize
++  SDL_GL_GetAttribute           class Window.GL_etAttribute
++  SDL_GL_GetCurrentContext      class Window.GL_GetCurrentContext
++  SDL_GL_GetCurrentWindow.......class Window.GL_GetCurrentWindow
++  SDL_GL_GetDrawableSize....... class Window.GL_GetDrawableSize
 -  SDL_GL_GetProcAddress
--  SDL_GL_GetSwapInterval
++  SDL_GL_GetSwapInterval........class Window.GL_GetSwapInterval
 -  SDL_GL_LoadLibrary
--  SDL_GL_MakeCurrent
--  SDL_GL_ResetAttributes
--  SDL_GL_SetAttribute
--  SDL_GL_SetSwapInterval
++  SDL_GL_MakeCurrent............class Window.GL_MakeCurrent
++  SDL_GL_ResetAttributes........class Window.GL_ResetAttributes
++  SDL_GL_SetAttribute           class Window.GL_SetAttribute
++  SDL_GL_SetSwapInterval........class Window.GL_SetSwapInterval
 -  SDL_GL_SwapWindow
 -  SDL_GL_UnloadLibrary
 -  SDL_GetClosestDisplayMode

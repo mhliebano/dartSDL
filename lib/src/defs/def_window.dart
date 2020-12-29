@@ -19,20 +19,20 @@ typedef sdl_destroywindow_func = Void Function(Pointer<Uint64> window);
 typedef dart_SDL_DestroyWindow = void Function(Pointer<Uint64> window);
 
 //SDL_GLContext SDL_GL_CreateContext(SDL_Window* window)
-typedef sdl_glcreatecontext_func = Pointer Function(Pointer<Uint64> window);
-typedef dart_SDL_GL_CreateContext = Pointer Function(Pointer<Uint64> window);
+typedef sdl_glcreatecontext_func = Pointer<Uint64> Function(Pointer<Uint64> window);
+typedef dart_SDL_GL_CreateContext = Pointer<Uint64> Function(Pointer<Uint64> window);
 
 //void SDL_GL_DeleteContext(SDL_GLContext context)
-typedef sdl_gldeletecontext_func = Void Function(Pointer glContext);
-typedef dart_SDL_GL_DeleteContext = void Function(Pointer glContext);
+typedef sdl_gldeletecontext_func = Void Function(Pointer<Uint64> glContext);
+typedef dart_SDL_GL_DeleteContext = void Function(Pointer<Uint64> glContext);
 
 //int SDL_GL_GetAttribute(SDL_GLattr attr,int* value)
 typedef sdl_glgetattribute_func = Int32 Function(Int32 attr, Pointer<Int32> value);
 typedef dart_SDL_GL_GetAttribute = int Function(int attr, Pointer<Int32> value);
 
 //SDL_GLContext SDL_GL_GetCurrentContext(void)
-typedef sdl_glgetcurrentcontext_func = Pointer Function();
-typedef dart_SDL_GL_GetCurrentContext = Pointer Function();
+typedef sdl_glgetcurrentcontext_func = Pointer<Uint64> Function();
+typedef dart_SDL_GL_GetCurrentContext = Pointer<Uint64> Function();
 
 //SDL_Window* SDL_GL_GetCurrentWindow(void)
 typedef sdl_glgetcurrentwindow_func = Pointer<Uint64> Function();
@@ -41,6 +41,26 @@ typedef dart_SDL_GL_GetCurrentWindow = Pointer<Uint64> Function();
 //void SDL_GL_GetDrawableSize(SDL_Window* window,int* w, int* h)
 typedef sdl_getdrawablesize_func = Void Function(Pointer<Uint64> window, Pointer<Uint32> w, Pointer<Uint32> h);
 typedef dart_SDL_GetDrawableSize = void Function(Pointer<Uint64> window, Pointer<Uint32> width, Pointer<Uint32> heigth);
+
+//int SDL_GL_GetSwapInterval(void)
+typedef sdl_glgetswapinterval_func = Int32 Function();
+typedef dart_SDL_GL_GetSwapInterval = int Function();
+
+//int SDL_GL_MakeCurrent(SDL_Window*   window, SDL_GLContext context)
+typedef sdl_glmakecurrent_func = Int32 Function(Pointer<Uint64> window, Pointer<Uint64> context);
+typedef dart_SDL_GL_MakeCurrent = int Function(Pointer<Uint64> window, Pointer<Uint64> context);
+
+//void SDL_GL_ResetAttributes(void)
+typedef sdl_glresetattributes_func = Void Function();
+typedef dart_SDL_GL_ResetAttributes = void Function();
+
+//int SDL_GL_SetAttribute(SDL_GLattr attr, int value)
+typedef sdl_glsetattribute_func = Int32 Function(Int32 GL_Attr, Int32 value);
+typedef dart_SDL_GL_SetAttribute = int Function(int GL_Attr, int value);
+
+//int SDL_GL_SetSwapInterval(int interval)
+typedef sdl_glsetswapinterval_func = Int32 Function(Int32 interval);
+typedef dart_SDL_GL_SetSwapInterval = int Function(int interval);
 
 typedef sld_getwindowsurface_func = Pointer<SurfaceStruct> Function(Pointer<Uint64> window);
 typedef dart_SDL_GetWindowSurface = Pointer<SurfaceStruct> Function(Pointer<Uint64> window);

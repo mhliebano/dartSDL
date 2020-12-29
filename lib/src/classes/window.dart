@@ -68,7 +68,7 @@ class Window {
     final SDL_GL_CreateContext = _sdllib
         .lookup<NativeFunction<sdl_glcreatecontext_func>>("SDL_GL_CreateContext")
         .asFunction<dart_SDL_GL_CreateContext>();
-    Pointer _glContext = SDL_GL_CreateContext(_window_internal);
+    Pointer<Uint64> _glContext = SDL_GL_CreateContext(_window_internal);
     if (_glContext == null) {
       throw (dartSDL.SDL_GetError());
     }
@@ -95,7 +95,7 @@ class Window {
         .lookup<NativeFunction<sdl_glgetattribute_func>>("SDL_GL_GetAttribute")
         .asFunction<dart_SDL_GL_GetAttribute>();
     Pointer<Int32> value = allocate();
-    int v = SDL_GL_GetAttr(GL_Attr.SDL_GL_RED_SIZE.index, value);
+    int v = SDL_GL_GetAttr(n.index, value);
     if (v != 0) {
       throw dartSDL.SDL_GetError();
     }
@@ -111,7 +111,7 @@ class Window {
     final SDL_GL_GetCurrentContext = _sdllib
         .lookup<NativeFunction<sdl_glgetcurrentcontext_func>>("SDL_GL_GetCurrentContext")
         .asFunction<dart_SDL_GL_GetCurrentContext>();
-    Pointer _glContext = SDL_GL_GetCurrentContext();
+    Pointer<Uint64> _glContext = SDL_GL_GetCurrentContext();
     if (_glContext == null) {
       throw (dartSDL.SDL_GetError());
     }
@@ -152,6 +152,81 @@ class Window {
     Pointer<Uint32> h = allocate();
     SDL_GetDrawableSize(_window_internal, w, h);
     return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
+  }
+
+  ///Use this function to get the swap interval for the current OpenGL context.
+  ///
+  ///Returns 0 if there is no vertical retrace synchronization,
+  ///1 if the buffer swap is synchronized with the  vertical retrace,
+  ///and -1 if late swaps happen immediately instead of waiting for the next retrace;
+
+  Window.GL_GetSwapInterval() {
+    final SDL_GL_GetSwapInterval = _sdllib
+        .lookup<NativeFunction<sdl_glgetswapinterval_func>>("SDL_GL_GetSwapInterval")
+        .asFunction<dart_SDL_GL_GetSwapInterval>();
+    int swap = SDL_GL_GetSwapInterval();
+    if (swap < -1 && swap > 1) {
+      throw (dartSDL.SDL_GetError());
+    }
+    return swap;
+  }
+
+  ///Use this function to set up an OpenGL context for rendering into an OpenGL window.
+  ///
+  ///Returns 0 on success or a negative error code on failure
+
+  void GL_MakeCurrent(GL_Context context) {
+    final SDL_GL_MakeCurrent = _sdllib
+        .lookup<NativeFunction<sdl_glmakecurrent_func>>("SDL_GL_MakeCurrent")
+        .asFunction<dart_SDL_GL_MakeCurrent>();
+    int make = SDL_GL_MakeCurrent(_window_internal, context.context);
+    if (make != 0) {
+      throw (dartSDL.SDL_GetError());
+    }
+  }
+
+  ///Use this function to reset all previously set OpenGL context attributes to their default values.
+  ///
+
+  Window.GL_ResetAttributes() {
+    _sdllib = dartSDL.sdllib;
+    final SDL_GL_ResetAttributes = _sdllib
+        .lookup<NativeFunction<sdl_glresetattributes_func>>("SDL_GL_ResetAttributes")
+        .asFunction<dart_SDL_GL_ResetAttributes>();
+    SDL_GL_ResetAttributes();
+  }
+
+  ///Use this function to set an OpenGL window attribute before window creation.
+  ///
+  ///attr=  the OpenGL attribute to set; see Remarks for details
+  ///value= the desired value for the attribute
+  ///
+
+  Window.GL_SetAttribute(GL_Attr attr, int value) {
+    _sdllib = dartSDL.sdllib;
+    final SDL_GL_SetAttribute = _sdllib
+        .lookup<NativeFunction<sdl_glsetattribute_func>>("SDL_GL_SetAttribute")
+        .asFunction<dart_SDL_GL_SetAttribute>();
+    print(attr.index);
+    int v = SDL_GL_SetAttribute(attr.index, value);
+    if (v != 0) {
+      throw (dartSDL.SDL_GetError());
+    }
+  }
+
+  ///Use this function to set the swap interval for the current OpenGL context.
+  ///
+  ///interval=0 for immediate updates, 1 for updates synchronized with the vertical retrace, -1 for adaptive vsync;
+  ///
+
+  Window.GL_SetSwapInterval(int interval) {
+    final SDL_GL_SetSwapInterval = _sdllib
+        .lookup<NativeFunction<sdl_glsetswapinterval_func>>("SDL_GL_SetSwapInterval")
+        .asFunction<dart_SDL_GL_SetSwapInterval>();
+    int swap = SDL_GL_SetSwapInterval(interval);
+    if (swap != 0) {
+      throw (dartSDL.SDL_GetError());
+    }
   }
 
   void DestroyWindow() {
