@@ -171,6 +171,12 @@ typedef dart_SDL_RaiseWindow = void Function(Pointer<Uint64> window);
 typedef sdl_restorewindow_func = Void Function(Pointer<Uint64> window);
 typedef dart_SDL_RestoreWindow = void Function(Pointer<Uint64> window);
 
+//void SDL_SetWindowBordered(SDL_Window* window, SDL_bool    bordered)
+typedef sdl_setwindowbordered_func = Void Function(
+    Pointer<Uint64> window, Int32 bordered);
+typedef dart_SDL_SetWindowBordered = void Function(
+    Pointer<Uint64> window, int bordered);
+
 //int SDL_SetWindowBrightness(SDL_Window* window,float brightness)
 typedef sld_setwindowbrightness_func = Int32 Function(
     Pointer<Uint64> window, Float brightness);

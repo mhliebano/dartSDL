@@ -567,6 +567,23 @@ class Window {
     SDL_SetWindowTitle(_window_internal, Utf8.toUtf8(title));
   }
 
+  ///Use this function to set the border state of a window.
+  ///
+  ///bordered=FALSE to remove border, TRUE to add border
+  ///
+  ///This will add or remove the window's SDL_WINDOW_BORDERLESS flag and add or
+  ///remove the border from the actual window. This is a no-op if the window's
+  ///border already matches the requested state.
+  ///You can't change the border state of a fullscreen window.
+
+  void SetWindowBordered(bool bordered) {
+    final SDL_SetWindowBordered = _sdllib
+        .lookup<NativeFunction<sdl_setwindowbordered_func>>(
+            "SDL_SetWindowBordered")
+        .asFunction<dart_SDL_SetWindowBordered>();
+    SDL_SetWindowBordered(_window_internal, bordered ? 1 : 0);
+  }
+
   ///Use this function to set the brightness (gamma multiplier) for the display that owns a given window.
   ///
   ///[double]brightness the brightness (gamma multiplier) value to set where 0.0 is completely dark and 1.0 is normal brightness
