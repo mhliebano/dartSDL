@@ -584,6 +584,25 @@ class Window {
     SDL_SetWindowBordered(_window_internal, bordered ? 1 : 0);
   }
 
+  ///Use this function to set a window's fullscreen state
+  ///
+  ///flags=SDL_WINDOW_FULLSCREEN, SDL_WINDOW_FULLSCREEN_DESKTOP or 0
+  ///
+  ///flags may be SDL_WINDOW_FULLSCREEN, for "real" fullscreen with a videomode
+  ///change; SDL_WINDOW_FULLSCREEN_DESKTOP for "fake" fullscreen that takes the
+  ///size of the desktop; and 0 for windowed mode.
+
+  void SetWindowFullscreen(int flags) {
+    final SDL_SetWindowfullscreen = _sdllib
+        .lookup<NativeFunction<sdl_setwindowfullscreen_func>>(
+            "SDL_SetWindowFullscreen")
+        .asFunction<dart_SDL_SetWindowFullscreen>();
+    int v = SDL_SetWindowfullscreen(_window_internal, flags);
+    if (v != 0) {
+      throw dartSDL.SDL_GetError();
+    }
+  }
+
   ///Use this function to set the brightness (gamma multiplier) for the display that owns a given window.
   ///
   ///[double]brightness the brightness (gamma multiplier) value to set where 0.0 is completely dark and 1.0 is normal brightness

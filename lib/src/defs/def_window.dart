@@ -177,6 +177,12 @@ typedef sdl_setwindowbordered_func = Void Function(
 typedef dart_SDL_SetWindowBordered = void Function(
     Pointer<Uint64> window, int bordered);
 
+//int SDL_SetWindowFullscreen(SDL_Window* window,Uint32 flags)
+typedef sdl_setwindowfullscreen_func = Int32 Function(
+    Pointer<Uint64> window, Int32 flag);
+typedef dart_SDL_SetWindowFullscreen = int Function(
+    Pointer<Uint64> window, int flag);
+
 //int SDL_SetWindowBrightness(SDL_Window* window,float brightness)
 typedef sld_setwindowbrightness_func = Int32 Function(
     Pointer<Uint64> window, Float brightness);
