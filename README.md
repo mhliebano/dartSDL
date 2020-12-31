@@ -108,23 +108,23 @@ Functions
 -  SDL_GetWindowFromID
 -  SDL_GetWindowGammaRamp
 -  SDL_GetWindowGrab
-+  SDL_GetWindowID              class Window.GetWindowId
-+  SDL_GetWindowMaximumSize     class Window.GetWindoMaximunSize
-+  SDL_GetWindowMinimumSize     class Window.GetWindoMminimunSize
-+  SDL_GetWindowOpacity         class Window.GetWindowOpacity
-+  SDL_GetWindowPixelFormat     class Window.GetWindowPixelFormat
-+  SDL_GetWindowPosition        class Window.GetWindowPosition
-+  SDL_GetWindowSize            class Window.GetWindowSize
++  SDL_GetWindowID               class Window.GetWindowId
++  SDL_GetWindowMaximumSize      class Window.GetWindoMaximunSize
++  SDL_GetWindowMinimumSize      class Window.GetWindoMminimunSize
++  SDL_GetWindowOpacity          class Window.GetWindowOpacity
++  SDL_GetWindowPixelFormat      class Window.GetWindowPixelFormat
++  SDL_GetWindowPosition         class Window.GetWindowPosition
++  SDL_GetWindowSize             class Window.GetWindowSize
 -  SDL_GetWindowSurface
-+  SDL_GetWindowTitle           class Window.GetWindowTitle
++  SDL_GetWindowTitle            class Window.GetWindowTitle
 -  SDL_GetWindowWMInfo
-+  SDL_HideWindow               class Window.HideWindow
-+  SDL_IsScreenSaverEnabled     class Window.IsScreenSaverEnabled
-+  SDL_MaximizeWindow           class Window.MaximizeWindow
-+  SDL_MinimizeWindow           class Window.MinimizeWindow
-+  SDL_RaiseWindow              class Window.RaiseWindow
-+  SDL_RestoreWindow            class Window.RestoreWindow
--  SDL_SetWindowBordered
++  SDL_HideWindow                class Window.HideWindow
++  SDL_IsScreenSaverEnabled      class Window.IsScreenSaverEnabled
++  SDL_MaximizeWindow            class Window.MaximizeWindow
++  SDL_MinimizeWindow            class Window.MinimizeWindow
++  SDL_RaiseWindow               class Window.RaiseWindow
++  SDL_RestoreWindow             class Window.RestoreWindow
++  SDL_SetWindowBordered         class Window.SetWindowBordered
 +  SDL_SetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_SetWindowData
 +  SDL_SetWindowDisplayMode      class Window.SetWindowDisplayMode

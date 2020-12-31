@@ -28,9 +28,10 @@ void main() async {
 
   print(window.GL_GetSwapInterval());
   print(window.GL_GetAttibute(GL_Attr.SDL_GL_RED_SIZE));
-
+  window.SetWindowBordered(false);
   sleep(Duration(seconds: 5));
-
+  window.SetWindowBordered(true);
+  sleep(Duration(seconds: 5));
   //renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana
 
