@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:ffi/ffi.dart';
+
 import '../class_struct/displaysmode_struct.dart';
 
 class DisplayMode {
@@ -48,18 +50,33 @@ class DisplayMode {
 
   int _format = 0;
   get format => _format;
+  set format(int f) {
+    _format = f;
+  }
 
   int _width = 0;
   get width => _width;
+  set width(int w) {
+    _width = w;
+  }
 
   int _heigth = 0;
   get heigth => _heigth;
+  set heigth(int h) {
+    _heigth = h;
+  }
 
   int _refresh_rate = 0;
   get refresh_rate => _refresh_rate;
+  set refresh_rate(int refresh_rate) {
+    _refresh_rate = refresh_rate;
+  }
 
   var _driver_data = 0;
   get driverdata => _driver_data;
+  set driverdata(int driver_data) {
+    _driver_data = driver_data;
+  }
 
   DisplayMode() {}
 
@@ -73,5 +90,14 @@ class DisplayMode {
   }
   factory DisplayMode.fromPointer(Pointer<DisplayModeStruct> displayMode) {
     return DisplayMode._fromPointer(displayMode);
+  }
+
+  Pointer<DisplayModeStruct> toPointer() {
+    Pointer<DisplayModeStruct> dmp = allocate();
+    dmp.ref.driverdata = _driver_data;
+    dmp.ref.format = _format;
+    dmp.ref.h = _heigth;
+    dmp.ref.w = width;
+    return dmp;
   }
 }
