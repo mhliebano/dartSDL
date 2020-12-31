@@ -128,7 +128,7 @@ Functions
 +  SDL_SetWindowBrightness       class Window.GetWindowBrightness
 -  SDL_SetWindowData
 +  SDL_SetWindowDisplayMode      class Window.SetWindowDisplayMode
--  SDL_SetWindowFullscreen
++  SDL_SetWindowFullscreen       class Window.SetWindowFullscreen
 -  SDL_SetWindowGammaRamp
 -  SDL_SetWindowGrab
 -  SDL_SetWindowHitTest

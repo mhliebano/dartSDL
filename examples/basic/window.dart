@@ -28,9 +28,9 @@ void main() async {
 
   print(window.GL_GetSwapInterval());
   print(window.GL_GetAttibute(GL_Attr.SDL_GL_RED_SIZE));
-  window.SetWindowBordered(false);
+  window.SetWindowFullscreen(WindowFlags.SDL_WINDOW_FULLSCREEN);
   sleep(Duration(seconds: 5));
-  window.SetWindowBordered(true);
+  window.SetWindowFullscreen(WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP);
   sleep(Duration(seconds: 5));
   //renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana
