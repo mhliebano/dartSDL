@@ -59,6 +59,16 @@ typedef sdl_getdisplaydpi_func = Int32 Function(
 typedef dart_SDL_GetDisplayDPI = int Function(
     int index, Pointer<Float> ddpi, Pointer<Float> hdpi, Pointer<Float> vdpi);
 
+//SDL_DisplayMode* SDL_GetClosestDisplayMode(int                    displayIndex,const SDL_DisplayMode* mode, SDL_DisplayMode*       closest)
+typedef sdl_getclosesdisplaymode_func = Pointer<DisplayModeStruct> Function(
+    Int32 displayIndex,
+    Pointer<DisplayModeStruct> mode,
+    Pointer<DisplayModeStruct> closest);
+typedef dart_SDL_GetClosesDisplayMode = Pointer<DisplayModeStruct> Function(
+    int displayIndex,
+    Pointer<DisplayModeStruct> mode,
+    Pointer<DisplayModeStruct> closest);
+
 typedef sdl_disablescreensaver_func = Void Function();
 typedef dart_SDL_DisableScreenSaver = void Function();
 typedef sdl_enablescreensaver_func = Void Function();
