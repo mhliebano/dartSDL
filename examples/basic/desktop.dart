@@ -49,6 +49,13 @@ void main() async {
       "Mode Current:, ${current_display.format},${current_display.width},${current_display.heigth}");
   print("DPI ${dpi["ddpi"]},${dpi["hdpi"]},${dpi["vdpi"]}");
 
+  DisplayMode customdm = DisplayMode();
+  customdm.width = 640;
+  customdm.heigth = 480;
+
+  DisplayMode closestDM = display.GetClosestDisplayMode(0, customdm);
+  print("${closestDM.width},${closestDM.heigth},${closestDM.refresh_rate}");
+
   Rect rect = display.GetDisplayBounds(0);
   print("DisplayBounds:, ${rect.x},${rect.y},${rect.width},${rect.heigth}");
 

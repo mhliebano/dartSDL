@@ -85,7 +85,7 @@ Functions
 +  SDL_GL_SetSwapInterval        class Window.GL_SetSwapInterval
 +  SDL_GL_SwapWindow             class Window.GL_SwapWindow
 -  SDL_GL_UnloadLibrary
--  SDL_GetClosestDisplayMode
++  SDL_GetClosestDisplayMode     class Display.GetClosestDisplayMode
 +  SDL_GetCurrentDisplayMode     class Display.GetCurrentDisplayMode
 +  SDL_GetCurrentVideoDriver     class Display.GetCurrentVideoDriver
 +  SDL_GetDesktopDisplayMode     class Display.GetDestktopDisplayMode
