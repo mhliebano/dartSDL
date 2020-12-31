@@ -157,6 +157,23 @@ class Display {
     return {"ddpi": ddpi.value, "hdpi": hdpi.value, "vdpi": vdpi.value};
   }
 
+  ///Use this function to get the closest match to the requested display mode.
+  ///
+  ///displayIndex=the index of the display to query
+  ///mode = an SDL_DisplayMode structure containing the desired display mode
+
+  DisplayMode GetClosestDisplayMode(int displayIndex, DisplayMode mode) {
+    final SDL_GetClosestDisplayMode = _sdllib
+        .lookup<NativeFunction<sdl_getclosesdisplaymode_func>>(
+            "SDL_GetClosestDisplayMode")
+        .asFunction<dart_SDL_GetClosesDisplayMode>();
+    Pointer<DisplayModeStruct> dm = allocate();
+    if (SDL_GetClosestDisplayMode(displayIndex, mode.toPointer(), dm) == null) {
+      throw dartSDL.SDL_GetError();
+    }
+    return DisplayMode.fromPointer(dm);
+  }
+
   void DisableScreenSaver() {
     final SDL_DisableScreenSaver = _sdllib
         .lookup<NativeFunction<sdl_disablescreensaver_func>>(
