@@ -167,7 +167,7 @@ Enumerations
 Structures
 
 ```diff
-- SDL_Renderer
++ SDL_Renderer                   class Renderer
 - SDL_RendererInfo
 - SDL_Texture
 ```
