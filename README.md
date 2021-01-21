@@ -1,6 +1,14 @@
-# dartSDL
+ # dartSDL
 
 binding a SDL libray using dart
+
+## How Contribute
+
+Translate to English =)
+
+Test the functions implements with examples
+
+Develop functions remaining
 
 ## SDL APi by Category
 
