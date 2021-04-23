@@ -26,9 +26,16 @@ class PixelFormatStruct extends Struct {
   @Uint32()
   int amask;
 
-  factory PixelFormatStruct.allocate(int format, Pointer<PaletteStruct> palette, int bitsPerPixel, int bytesPerPixel,
-      int rmask, int gmask, int bmask, int amask) {
-    return allocate<PixelFormatStruct>().ref
+  factory PixelFormatStruct.calloc(
+      int format,
+      Pointer<PaletteStruct> palette,
+      int bitsPerPixel,
+      int bytesPerPixel,
+      int rmask,
+      int gmask,
+      int bmask,
+      int amask) {
+    return calloc<PixelFormatStruct>().ref
       ..format
       ..palette
       ..bitsPerPixel

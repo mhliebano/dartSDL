@@ -17,8 +17,9 @@ class DisplayModeStruct extends Struct {
   @Int32()
   int driverdata;
 
-  factory DisplayModeStruct.allocate(int format, int w, int h, int refresh_rate, int driverdata) {
-    return allocate<DisplayModeStruct>().ref
+  factory DisplayModeStruct.calloc(
+      int format, int w, int h, int refresh_rate, int driverdata) {
+    return calloc<DisplayModeStruct>().ref
       ..format = format
       ..w = w
       ..h = h
@@ -27,7 +28,7 @@ class DisplayModeStruct extends Struct {
   }
 
   factory DisplayModeStruct() {
-    return allocate<DisplayModeStruct>().ref
+    return calloc<DisplayModeStruct>().ref
       ..format
       ..w
       ..h

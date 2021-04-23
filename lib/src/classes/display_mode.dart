@@ -93,7 +93,7 @@ class DisplayMode {
   }
 
   Pointer<DisplayModeStruct> toPointer() {
-    Pointer<DisplayModeStruct> dmp = allocate();
+    Pointer<DisplayModeStruct> dmp = calloc();
     dmp.ref.driverdata = _driver_data;
     dmp.ref.format = _format;
     dmp.ref.h = _heigth;

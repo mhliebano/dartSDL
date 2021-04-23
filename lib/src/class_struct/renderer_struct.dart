@@ -18,14 +18,14 @@ class RendererStruct extends Struct {
   @Uint32()
   int max_texture_height;
 
-  factory RendererStruct.allocate(
+  factory RendererStruct.malloc(
       Pointer<Utf8> name,
       int flags,
       int texture_formats,
       Pointer<Int32> num_texture_formats,
       int max_texture_width,
       int max_texture_height) {
-    return allocate<RendererStruct>().ref
+    return malloc<RendererStruct>().ref
       ..flags
       ..name
       ..texture_formats

@@ -10,8 +10,8 @@ class ColorStruct extends Struct {
   int b;
   @Uint8()
   int a;
-  factory ColorStruct.allocate(int r, int g, int b, int a) {
-    return allocate<ColorStruct>().ref
+  factory ColorStruct.calloc(int r, int g, int b, int a) {
+    return calloc<ColorStruct>().ref
       ..r = r
       ..g = g
       ..b = b

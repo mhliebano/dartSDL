@@ -34,7 +34,7 @@ class Window {
         .lookup<NativeFunction<sdl_createwindow_func>>('SDL_CreateWindow')
         .asFunction<dart_SDL_CreateWindow>();
     _window_internal =
-        SDL_CreateWindow(Utf8.toUtf8(title), x, y, width, height, flag);
+        SDL_CreateWindow(title.toNativeUtf8(), x, y, width, height, flag);
     if (_window_internal == null) {
       throw (dartSDL.SDL_GetError());
     }
@@ -54,8 +54,8 @@ class Window {
         .lookup<NativeFunction<sdl_createwindowandrender_func>>(
             "SDL_CreateWindowAndRenderer")
         .asFunction<dart_SDL_CreateWindowAndRender>();
-    Pointer<Uint64> window = allocate();
-    Pointer<Uint64> renderer = allocate();
+    Pointer<Uint64> window = calloc();
+    Pointer<Uint64> renderer = calloc();
     int v = CreateWindowAndRender(width, height, flag, window, renderer);
     if (v != 0) {
       throw (dartSDL.SDL_GetError());
@@ -100,7 +100,7 @@ class Window {
     final SDL_GL_GetAttr = _sdllib
         .lookup<NativeFunction<sdl_glgetattribute_func>>("SDL_GL_GetAttribute")
         .asFunction<dart_SDL_GL_GetAttribute>();
-    Pointer<Int32> value = allocate();
+    Pointer<Int32> value = calloc();
     int v = SDL_GL_GetAttr(n.index, value);
     if (v != 0) {
       throw dartSDL.SDL_GetError();
@@ -157,8 +157,8 @@ class Window {
         .lookup<NativeFunction<sdl_getdrawablesize_func>>(
             "SDL_GL_GetDrawableSize")
         .asFunction<dart_SDL_GetDrawableSize>();
-    Pointer<Uint32> w = allocate();
-    Pointer<Uint32> h = allocate();
+    Pointer<Uint32> w = calloc();
+    Pointer<Uint32> h = calloc();
     SDL_GetDrawableSize(_window_internal, w, h);
     return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
   }
@@ -325,7 +325,7 @@ class Window {
         .lookup<NativeFunction<sld_getwindowopacity_func>>(
             "SDL_GetWindowOpacity")
         .asFunction<dart_SDL_GetWindowOpacity>();
-    Pointer<Float> op = allocate();
+    Pointer<Float> op = calloc();
     int opac = SDL_GetWindowOpacity(_window_internal, op);
     if (opac < 0) {
       print(dartSDL.SDL_GetError());
@@ -341,7 +341,7 @@ class Window {
     final SDL_GetWindowData = _sdllib
         .lookup<NativeFunction<sld_getwindowdata_func>>("SDL_GetWindowData")
         .asFunction<dart_SDL_GetWindowData>();
-    Pointer<Utf8> namepointer = Utf8.toUtf8("testdatapointer");
+    Pointer<Utf8> namepointer = "testdatapointer".toNativeUtf8();
     Pointer data = SDL_GetWindowData(_window_internal, namepointer);
     print(data.cast<Int32>().value);
     return "ok"; //Utf8.fromUtf8(namepointer);
@@ -387,8 +387,8 @@ class Window {
     final SDL_GetWindowSize = _sdllib
         .lookup<NativeFunction<sdl_getwindowsize_func>>("SDL_GetWindowSize")
         .asFunction<dart_SDL_GetWindowSize>();
-    Pointer<Uint32> w = allocate();
-    Pointer<Uint32> h = allocate();
+    Pointer<Uint32> w = calloc();
+    Pointer<Uint32> h = calloc();
     SDL_GetWindowSize(_window_internal, w, h);
     return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
   }
@@ -402,8 +402,8 @@ class Window {
         .lookup<NativeFunction<sdl_getwindowmaxsize_func>>(
             "SDL_GetWindowMaximumSize")
         .asFunction<dart_SDL_GetWindowMaxSize>();
-    Pointer<Uint32> w = allocate();
-    Pointer<Uint32> h = allocate();
+    Pointer<Uint32> w = calloc();
+    Pointer<Uint32> h = calloc();
     SDL_GetWindowMaxSize(_window_internal, w, h);
     return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
   }
@@ -417,8 +417,8 @@ class Window {
         .lookup<NativeFunction<sdl_getwindowminsize_func>>(
             "SDL_GetWindowMinimumSize")
         .asFunction<dart_SDL_GetWindowMinSize>();
-    Pointer<Uint32> w = allocate();
-    Pointer<Uint32> h = allocate();
+    Pointer<Uint32> w = calloc();
+    Pointer<Uint32> h = calloc();
     SDL_GetWindowMinSize(_window_internal, w, h);
     return {"width": w.cast<Int32>().value, "heigth": h.cast<Int32>().value};
   }
@@ -446,8 +446,8 @@ class Window {
         .lookup<NativeFunction<sdl_getwindowposition_func>>(
             "SDL_GetWindowPosition")
         .asFunction<dart_SDL_GetWindowPosition>();
-    Pointer<Uint32> x = allocate();
-    Pointer<Uint32> y = allocate();
+    Pointer<Uint32> x = calloc();
+    Pointer<Uint32> y = calloc();
     SDL_GetWindowPosition(_window_internal, x, y);
     return {"x": x.cast<Int32>().value, "y": y.cast<Int32>().value};
   }
@@ -462,7 +462,7 @@ class Window {
         .lookup<NativeFunction<sdl_getwindowtitle_func>>("SDL_GetWindowTitle")
         .asFunction<dart_SDL_GetWindowTitle>();
     Pointer<Utf8> title = SDL_GetWindowTitle(_window_internal);
-    return Utf8.fromUtf8(title);
+    return title.toDartString();
   }
 
   ///Use this function to hide a window.
@@ -564,7 +564,7 @@ class Window {
     final SDL_SetWindowTitle = _sdllib
         .lookup<NativeFunction<sdl_setwindowtitle_func>>('SDL_SetWindowTitle')
         .asFunction<dart_SDL_SetWindowTitle>();
-    SDL_SetWindowTitle(_window_internal, Utf8.toUtf8(title));
+    SDL_SetWindowTitle(_window_internal, title.toNativeUtf8());
   }
 
   ///Use this function to set the border state of a window.
@@ -638,7 +638,7 @@ class Window {
         .lookup<NativeFunction<sld_setwindowdata_func>>("SDL_SetWindowData")
         .asFunction<dart_SDL_SetWindowData>();
 
-    Pointer<Utf8> namepointer = Utf8.toUtf8(variable);
+    Pointer<Utf8> namepointer = variable.toNativeUtf8();
     Pointer<Int32> datapointer = Pointer.fromAddress(data);
     SDL_SetWindowData(_window_internal, namepointer, datapointer);
     //return Utf8.fromUtf8(namepointer);
@@ -650,7 +650,7 @@ class Window {
             "SDL_SetWindowDisplayMode")
         .asFunction<dart_SDL_SetWindowDisplayMode>();
 
-    DisplayModeStruct dps = DisplayModeStruct.allocate(
+    DisplayModeStruct dps = DisplayModeStruct.calloc(
         dm.format, dm.width, dm.heigth, dm.refresh_rate, 0);
     SDL_SetWindowDisplayMode(_window_internal, dps.addressOf);
     //return Utf8.fromUtf8(namepointer);

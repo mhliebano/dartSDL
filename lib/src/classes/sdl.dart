@@ -28,7 +28,9 @@ class DartSDL {
   }
 
   void SDL_Init({int flags}) {
-    final SDL_Init = _sdllib.lookup<NativeFunction<sdl_init_func>>('SDL_Init').asFunction<dart_SDL_Init>();
+    final SDL_Init = _sdllib
+        .lookup<NativeFunction<sdl_init_func>>('SDL_Init')
+        .asFunction<dart_SDL_Init>();
     if (flags == null) {
       flags = 0;
     }
@@ -39,7 +41,9 @@ class DartSDL {
   }
 
   void SDL_Quit() {
-    final SDL_Quit = _sdllib.lookup<NativeFunction<sdl_quit_func>>('SDL_Quit').asFunction<dart_SDL_Quit>();
+    final SDL_Quit = _sdllib
+        .lookup<NativeFunction<sdl_quit_func>>('SDL_Quit')
+        .asFunction<dart_SDL_Quit>();
     SDL_Quit();
   }
 
@@ -66,7 +70,9 @@ class DartSDL {
   ///If flags is 0 it returns a mask of all initialized subsystems, otherwise it returns the initialization status of the specified subsystems.
   ///
   int SDL_WasInit({int flag}) {
-    final SDL_WasInit = _sdllib.lookup<NativeFunction<sdl_wasinit_func>>("SDL_WasInit").asFunction<dart_SDL_WasInit>();
+    final SDL_WasInit = _sdllib
+        .lookup<NativeFunction<sdl_wasinit_func>>("SDL_WasInit")
+        .asFunction<dart_SDL_WasInit>();
     if (flag == null) {
       flag = 0;
     }
@@ -75,10 +81,11 @@ class DartSDL {
   }
 
   String SDL_GetError() {
-    final SDL_GetError =
-        _sdllib.lookup<NativeFunction<sdl_geterror_func>>('SDL_GetError').asFunction<dart_SDL_GetError>();
+    final SDL_GetError = _sdllib
+        .lookup<NativeFunction<sdl_geterror_func>>('SDL_GetError')
+        .asFunction<dart_SDL_GetError>();
     final error = SDL_GetError();
-    return (Utf8.fromUtf8(error));
+    return (error.toDartString());
   }
 
   Window SDL_GetWindowFromId(int id) {

@@ -14,8 +14,8 @@ class RectStruct extends Struct {
   @Int32()
   int h;
 
-  factory RectStruct.allocate(int x, int y, int w, int h) {
-    return allocate<RectStruct>().ref
+  factory RectStruct.calloc(int x, int y, int w, int h) {
+    return calloc<RectStruct>().ref
       ..x
       ..y
       ..w
@@ -23,7 +23,7 @@ class RectStruct extends Struct {
   }
 
   factory RectStruct() {
-    return allocate<RectStruct>().ref
+    return calloc<RectStruct>().ref
       ..x
       ..y
       ..w

@@ -55,19 +55,28 @@ class Renderer {
         .lookup<NativeFunction<sdl_getrendererinfo_func>>("SDL_GetRendererInfo")
         .asFunction<dart_SDL_GetRendererInfo>();
 
-    Pointer<RendererStruct> info = allocate<RendererStruct>(count: 1);
+    Pointer<RendererStruct> info = malloc<RendererStruct>(1);
     int v = SDL_GetRendererInfo(_render_internal, info);
     if (v != 0) {
       throw dartSDL.SDL_GetError();
     }
-    print(Utf8.fromUtf8(info.ref.name));
+    print((info.ref.name.toDartString()));
     print(info.ref.num_texture_formats);
     print(info.ref.max_texture_height);
     print(info.ref.max_texture_width);
     print(info.ref.flags);
-    print(info.ref.texture_formats.asTypedList(16));
+    Int32List l = info.ref.texture_formats.asTypedList(16);
+    //print(info.ref.texture_formats.address);
+    // ByteData x = ByteData(6);
+    // print(x.buffer.asUint8List());
+    // Uint8List y = await _base.read(6);
+    // print("${ByteData.view(y.buffer).getUint32(0)} ${ByteData.view(y.buffer).getUint8(4)}");
+    //print(l.buffer.lengthInBytes);
+    //final bytes = ByteData.view(l.buffer);
+    // print(bytes.getInt32(0));
 
     print("----------");
+    calloc.free(info);
   }
 
   void DestroyRenderer() {

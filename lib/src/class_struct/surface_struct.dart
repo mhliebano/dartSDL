@@ -24,9 +24,17 @@ class SurfaceStruct extends Struct {
   @Int32()
   int refcount;
 
-  factory SurfaceStruct.allocate(int flags, Pointer<PixelFormatStruct> SDL_PixelFormat, int w, int h, int pitch,
-      Pointer<Void> pixels, Pointer<Void> userdata, Pointer<RectStruct> SDL_Rect, int refcount) {
-    return allocate<SurfaceStruct>().ref
+  factory SurfaceStruct.calloc(
+      int flags,
+      Pointer<PixelFormatStruct> SDL_PixelFormat,
+      int w,
+      int h,
+      int pitch,
+      Pointer<Void> pixels,
+      Pointer<Void> userdata,
+      Pointer<RectStruct> SDL_Rect,
+      int refcount) {
+    return calloc<SurfaceStruct>().ref
       ..flags
       ..SDL_PixelFormat
       ..w

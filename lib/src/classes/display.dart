@@ -93,7 +93,7 @@ class Display {
         .lookup<NativeFunction<sdl_getdisplayname_func>>("SDL_GetDisplayName")
         .asFunction<dart_SDL_GetDisplayName>();
     final name = SDL_GetDisplayName(displayIndex);
-    return (Utf8.fromUtf8(name));
+    return (name.toDartString());
   }
 
   Rect GetDisplayUsableBounds(int displayIndex) {
@@ -116,7 +116,7 @@ class Display {
             "SDL_GetCurrentVideoDriver")
         .asFunction<dart_SDL_GetCurrentVideoDriver>();
     final name = SDL_GetCurrentVideoDriver();
-    return Utf8.fromUtf8(name);
+    return name.toDartString();
   }
 
   int GetNumVideoDrivers() {
@@ -138,7 +138,7 @@ class Display {
         .lookup<NativeFunction<sdl_getvideodriver_func>>("SDL_GetVideoDriver")
         .asFunction<dart_SDL_GetVideoDriver>();
     final name = SDL_GetVideoDriver(index);
-    return Utf8.fromUtf8(name);
+    return name.toDartString();
   }
 
   ///Use this function to get the dots/pixels-per-inch for a display.
@@ -147,9 +147,9 @@ class Display {
     final SDL_GetDisplayDPI = _sdllib
         .lookup<NativeFunction<sdl_getdisplaydpi_func>>("SDL_GetDisplayDPI")
         .asFunction<dart_SDL_GetDisplayDPI>();
-    Pointer<Float> ddpi = allocate();
-    Pointer<Float> hdpi = allocate();
-    Pointer<Float> vdpi = allocate();
+    Pointer<Float> ddpi = calloc();
+    Pointer<Float> hdpi = calloc();
+    Pointer<Float> vdpi = calloc();
     int s = SDL_GetDisplayDPI(index, ddpi, hdpi, vdpi);
     if (s != 0) {
       throw dartSDL.SDL_GetError();
@@ -167,7 +167,7 @@ class Display {
         .lookup<NativeFunction<sdl_getclosesdisplaymode_func>>(
             "SDL_GetClosestDisplayMode")
         .asFunction<dart_SDL_GetClosesDisplayMode>();
-    Pointer<DisplayModeStruct> dm = allocate();
+    Pointer<DisplayModeStruct> dm = calloc();
     if (SDL_GetClosestDisplayMode(displayIndex, mode.toPointer(), dm) == null) {
       throw dartSDL.SDL_GetError();
     }
