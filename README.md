@@ -1,4 +1,4 @@
- # dartSDL
+# dartSDL
 
 binding a SDL libray using dart
 
@@ -199,7 +199,7 @@ Functions
 - SDL_GetRenderDriverInfo
 - SDL_GetRenderTarget
 - SDL_GetRenderer
-- SDL_GetRendererInfo
++ SDL_GetRendererInfo          class Renderer.GetRendererInfo
 - SDL_GetRendererOutputSize
 - SDL_GetTextureAlphaMod
 - SDL_GetTextureBlendMode

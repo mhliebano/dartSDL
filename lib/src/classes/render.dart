@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:dartSDL/src/class_struct/renderer_struct.dart';
+import 'package:dartSDL/src/classes/render_info.dart';
 import 'package:ffi/ffi.dart';
 
 import '../../dartSDL.dart';
@@ -50,33 +51,29 @@ class Renderer {
     }
   }
 
-  void GetRendererInfo() {
+  RendererInfo GetRendererInfo() {
     final SDL_GetRendererInfo = _sdllib
         .lookup<NativeFunction<sdl_getrendererinfo_func>>("SDL_GetRendererInfo")
         .asFunction<dart_SDL_GetRendererInfo>();
 
-    Pointer<RendererStruct> info = malloc<RendererStruct>(1);
+    Pointer<RendererStruct> info = calloc<RendererStruct>(1024);
     int v = SDL_GetRendererInfo(_render_internal, info);
     if (v != 0) {
       throw dartSDL.SDL_GetError();
+    } else {
+      return RendererInfo(
+          name: info.ref.name.toDartString(),
+          flags: info.ref.flags,
+          maxTextureHeight: info.ref.max_texture_height,
+          maxTextureWidth: info.ref.max_texture_width,
+          numTextureFormats: info.ref.num_texture_formats,
+          textureFormats: info.ref.texture_formats
+              .cast<Int32>()
+              .asTypedList(16)
+              .buffer
+              .asInt32List(64)
+              .toList());
     }
-    print((info.ref.name.toDartString()));
-    print(info.ref.num_texture_formats);
-    print(info.ref.max_texture_height);
-    print(info.ref.max_texture_width);
-    print(info.ref.flags);
-    Int32List l = info.ref.texture_formats.asTypedList(16);
-    //print(info.ref.texture_formats.address);
-    // ByteData x = ByteData(6);
-    // print(x.buffer.asUint8List());
-    // Uint8List y = await _base.read(6);
-    // print("${ByteData.view(y.buffer).getUint32(0)} ${ByteData.view(y.buffer).getUint8(4)}");
-    //print(l.buffer.lengthInBytes);
-    //final bytes = ByteData.view(l.buffer);
-    // print(bytes.getInt32(0));
-
-    print("----------");
-    calloc.free(info);
   }
 
   void DestroyRenderer() {
