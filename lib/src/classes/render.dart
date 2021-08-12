@@ -1,5 +1,4 @@
 import 'dart:ffi';
-import 'dart:typed_data';
 import 'package:dartSDL/src/class_struct/renderer_struct.dart';
 import 'package:dartSDL/src/classes/render_info.dart';
 import 'package:ffi/ffi.dart';

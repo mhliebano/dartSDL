@@ -7,4 +7,4 @@ documentation: https://github/mhliebano/dartSDL/doc
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dependencies:
-  ffi: ^1.0.0
+  ffi: ^1.1.2

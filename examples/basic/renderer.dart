@@ -22,7 +22,7 @@ void main() async {
   renderer.SDL_RenderClear();
   renderer.SDL_RenderPresent();
   //renderer.GetRendererInfo();
-  sleep(Duration(seconds: 5));
+  sleep(Duration(seconds: 10));
   renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana
   dartSDL.SDL_Quit(); //Salgo del Programa

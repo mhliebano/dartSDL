@@ -304,7 +304,7 @@ class Window {
         .lookup<NativeFunction<sld_getwindowdisplaymode_func>>(
             "SDL_GetWindowDisplayMode")
         .asFunction<dart_SDL_GetWindowDisplayMode>();
-    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    Pointer<DisplayModeStruct> displaymode = calloc<DisplayModeStruct>();
     final desktopdisplaymode =
         SDL_GetWindowDisplayMode(_window_internal, displaymode);
     DisplayMode dm = null;

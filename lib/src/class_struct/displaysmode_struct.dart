@@ -2,6 +2,8 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
 class DisplayModeStruct extends Struct {
+  // expose address of the struct as a field
+
   @Uint32()
   int format;
 

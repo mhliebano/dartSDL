@@ -35,7 +35,7 @@ class Display {
         .lookup<NativeFunction<sdl_desktopdisplaymode_func>>(
             "SDL_GetDesktopDisplayMode")
         .asFunction<dart_SDL_GetDesktopDisplayMode>();
-    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    Pointer<DisplayModeStruct> displaymode = calloc<DisplayModeStruct>();
     final desktopdisplaymode =
         SDL_GetDesktopDisplayMode(displayIndex, displaymode);
     DisplayMode dm = null;
@@ -49,7 +49,7 @@ class Display {
     final SDL_GetDisplayMode = _sdllib
         .lookup<NativeFunction<sdl_getdisplaymode_func>>("SDL_GetDisplayMode")
         .asFunction<dart_SDL_GetDisplayMode>();
-    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    Pointer<DisplayModeStruct> displaymode = calloc<DisplayModeStruct>();
     final desktopdisplaymode =
         SDL_GetDisplayMode(displayIndex, modeIndex, displaymode);
     DisplayMode dm = null;
@@ -64,7 +64,7 @@ class Display {
         .lookup<NativeFunction<sdl_getcurrentdisplaymode_func>>(
             "SDL_GetCurrentDisplayMode")
         .asFunction<dart_SDL_GetCurrentDisplayMode>();
-    Pointer<DisplayModeStruct> displaymode = DisplayModeStruct().addressOf;
+    Pointer<DisplayModeStruct> displaymode = calloc<DisplayModeStruct>();
     final desktopdisplaymode =
         SDL_GetCurrentDisplayMode(displayIndex, displaymode);
     DisplayMode dm = null;
@@ -79,7 +79,7 @@ class Display {
         .lookup<NativeFunction<sdl_getdisplaybounds_func>>(
             "SDL_GetDisplayBounds")
         .asFunction<dart_SDL_GetDisplayBounds>();
-    Pointer<RectStruct> rectpointer = RectStruct().addressOf;
+    Pointer<RectStruct> rectpointer = calloc<RectStruct>();
     final rectbounds = SDL_GetDisplayBounds(displayIndex, rectpointer);
     Rect rect = null;
     if (rectbounds == 0) {
@@ -101,7 +101,7 @@ class Display {
         .lookup<NativeFunction<sdl_getdisplayusablebounds_func>>(
             "SDL_GetDisplayUsableBounds")
         .asFunction<dart_SDL_GetDisplayUsableBounds>();
-    Pointer<RectStruct> rectpointer = RectStruct().addressOf;
+    Pointer<RectStruct> rectpointer = calloc<RectStruct>();
     final rectbounds = SDL_GetDisplayUsableBounds(displayIndex, rectpointer);
     Rect rect = null;
     if (rectbounds == 0) {
