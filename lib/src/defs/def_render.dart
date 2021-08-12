@@ -15,7 +15,16 @@ typedef dart_SDL_GetRendererInfo = int Function(
 
 typedef sdl_destroyrenderer_func = Void Function(Pointer<Uint64> renderer);
 typedef dart_SDL_DestroyRenderer = void Function(Pointer<Uint64> render);
+
 typedef sdl_setrenderdrawcolor_func = Int32 Function(
     Pointer<Uint64> render, Int8 r, Int8 g, Int8 b, Int8 a);
 typedef dart_SDL_SetRenderDrawColor = int Function(
     Pointer<Uint64> render, int r, int g, int b, int a);
+
+//int SDL_RenderClear(SDL_Renderer * renderer);
+typedef sdl_rendererclear_func = Int32 Function(Pointer<Uint64> render);
+typedef dart_SDL_RendererClear = int Function(Pointer<Uint64> render);
+
+//void SDL_RenderPresent(SDL_Renderer * renderer);
+typedef sdl_rendererpresent_func = Void Function(Pointer<Uint64> render);
+typedef dart_SDL_RendererPresent = void Function(Pointer<Uint64> render);

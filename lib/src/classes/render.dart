@@ -90,4 +90,18 @@ class Renderer {
         .asFunction<dart_SDL_SetRenderDrawColor>();
     return SDL_SetRenderDrawColor(_render_internal, r, g, b, a);
   }
+
+  int SDL_RenderClear() {
+    final SDL_RenderClear = _sdllib
+        .lookup<NativeFunction<sdl_rendererclear_func>>('SDL_RenderClear')
+        .asFunction<dart_SDL_RendererClear>();
+    return SDL_RenderClear(_render_internal);
+  }
+
+  void SDL_RenderPresent() {
+    final SDL_RenderPresent = _sdllib
+        .lookup<NativeFunction<sdl_rendererpresent_func>>('SDL_RenderPresent')
+        .asFunction<dart_SDL_RendererPresent>();
+    SDL_RenderPresent(_render_internal);
+  }
 }

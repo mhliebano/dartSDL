@@ -18,7 +18,10 @@ void main() async {
       WindowFlags.SDL_WINDOW_OPENGL);
 
   renderer = Renderer.CreateRenderer(window);
-  renderer.GetRendererInfo();
+  renderer.SDL_SetRenderDrawColor(255, 0, 0, 255);
+  renderer.SDL_RenderClear();
+  renderer.SDL_RenderPresent();
+  //renderer.GetRendererInfo();
   sleep(Duration(seconds: 5));
   renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana

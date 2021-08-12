@@ -206,7 +206,7 @@ Functions
 - SDL_GetTextureColorMod
 - SDL_LockTexture
 - SDL_QueryTexture
-- SDL_RenderClear
++ SDL_RenderClear            class Renderer.RenderClear
 - SDL_RenderCopy
 - SDL_RenderCopyEx
 - SDL_RenderDrawLine
@@ -223,7 +223,7 @@ Functions
 - SDL_RenderGetScale
 - SDL_RenderGetViewport
 - SDL_RenderIsClipEnabled
-- SDL_RenderPresent
++ SDL_RenderPresent         class Renderer.RenderPresent
 - SDL_RenderReadPixels
 - SDL_RenderSetClipRect
 - SDL_RenderSetIntegerScale
@@ -232,7 +232,7 @@ Functions
 - SDL_RenderSetViewport
 - SDL_RenderTargetSupported
 - SDL_SetRenderDrawBlendMode
-- SDL_SetRenderDrawColor
++ SDL_SetRenderDrawColor        class Renderer.SDL_SetRenderDrawColor
 - SDL_SetRenderTarget
 - SDL_SetTextureAlphaMod
 - SDL_SetTextureBlendMode
