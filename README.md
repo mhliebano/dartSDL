@@ -123,7 +123,7 @@ Functions
 +  SDL_GetWindowPixelFormat      class Window.GetWindowPixelFormat
 +  SDL_GetWindowPosition         class Window.GetWindowPosition
 +  SDL_GetWindowSize             class Window.GetWindowSize
--  SDL_GetWindowSurface
++  SDL_GetWindowSurface          class Window.GetWindowSurface
 +  SDL_GetWindowTitle            class Window.GetWindowTitle
 -  SDL_GetWindowWMInfo
 +  SDL_HideWindow                class Window.HideWindow
@@ -240,4 +240,29 @@ Functions
 - SDL_UnlockTexture
 - SDL_UpdateTexture
 - SDL_UpdateYUVTexture
+```
+
+### Pixel Formats and Conversion Routines
+
+Functions
+
+```diff
+- SDL_AllocFormat
+- SDL_AllocPalette
+- SDL_CalculateGammaRamp
+- SDL_Color
+- SDL_FreeFormat
+- SDL_FreePalette
+- SDL_GetPixelFormatName
+- SDL_GetRGB
+- SDL_GetRGBA
+- SDL_MapRGB
+- SDL_MapRGBA
+- SDL_MasksToPixelFormatEnum
+- SDL_Palette
+- SDL_PixelFormat
+- SDL_PixelFormatEnum
+- SDL_PixelFormatEnumToMasks
+- SDL_SetPaletteColors
+- SDL_SetPixelFormatPalette
 ```

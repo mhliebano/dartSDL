@@ -21,7 +21,12 @@ void main() async {
   renderer.SDL_SetRenderDrawColor(255, 0, 0, 255);
   renderer.SDL_RenderClear();
   renderer.SDL_RenderPresent();
+  sleep(Duration(seconds: 5));
+
   //renderer.GetRendererInfo();
+  renderer.SDL_SetRenderDrawColor(255, 255, 0, 255);
+  renderer.SDL_RenderClear();
+  renderer.SDL_RenderPresent();
   sleep(Duration(seconds: 10));
   renderer.DestroyRenderer();
   window.DestroyWindow(); //Elimino la ventana

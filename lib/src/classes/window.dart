@@ -257,6 +257,7 @@ class Window {
     SDL_DestroyWindow(_window_internal);
   }
 
+  ///Get the SDL surface associated with the window.
   Surface GetWindowSurface() {
     final SDL_GetWindowSurface = _sdllib
         .lookup<NativeFunction<sld_getwindowsurface_func>>(

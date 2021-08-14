@@ -74,6 +74,7 @@ typedef dart_SDL_GL_SetSwapInterval = int Function(int interval);
 typedef sdl_glswapwindow_func = Void Function(Pointer<Uint64> window);
 typedef dart_SDL_GL_SwapWindow = void Function(Pointer<Uint64> window);
 
+//SDL_Surface * SDL_GetWindowSurface(SDL_Window * window);
 typedef sld_getwindowsurface_func = Pointer<SurfaceStruct> Function(
     Pointer<Uint64> window);
 typedef dart_SDL_GetWindowSurface = Pointer<SurfaceStruct> Function(

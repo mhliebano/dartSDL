@@ -1,10 +1,10 @@
 import 'dart:ffi';
 import '../class_struct/surface_struct.dart';
 import '../defs/def_surface.dart';
+import 'color.dart';
 import 'pixel_format.dart';
 
 class Surface {
-  //TODO implementar resto de las propiedades
   //void* pixels (r/w)
   //void* userdata (r/w)
 
@@ -23,6 +23,7 @@ class Surface {
     _s.ref.refcount = r;
   }
 
+  static DynamicLibrary _sdllib;
   //Read Only
   //Rect get rect => Rect.fromStruct(_s.ref.SDL_Rect);
 
@@ -49,6 +50,7 @@ class Surface {
     if (_surface_internal == null) {
       throw ("No se pudo crear la Surface");
     }
+    _sdllib = sdllib;
     return Surface._default(_surface_internal);
   }
 
@@ -71,6 +73,16 @@ class Surface {
     if (_surface_internal == null) {
       throw ("No se pudo crear la Surface");
     }
+    _sdllib = sdllib;
     return Surface._default(_surface_internal);
+  }
+
+  ///Perform a fast fill of a rectangle with a specific color.
+  int fillRect(Color c) {
+    final SDL_FillRect = _sdllib
+        .lookup<NativeFunction<sdl_fillrect_func>>("SDL_FillRect")
+        .asFunction<dart_SDL_FillRect>();
+
+    return 0;
   }
 }

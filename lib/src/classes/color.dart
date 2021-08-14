@@ -27,6 +27,13 @@ class Color {
     _a = a;
   }
 
+  Color({int r, int g, int b, int a}) {
+    _a = a;
+    _r = r;
+    _g = g;
+    _b = b;
+  }
+
   //Constructor in preserve Pointer Original
   Color._fromPointer(Pointer<ColorStruct> color) {}
   factory Color.fromPointer(Pointer<ColorStruct> color) {
